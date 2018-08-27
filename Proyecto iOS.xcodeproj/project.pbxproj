@@ -38,6 +38,7 @@
 		A006F1982133D970005F7DF8 /* SobreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006F1972133D970005F7DF8 /* SobreViewController.swift */; };
 		A006F19A2133D98E005F7DF8 /* AsistenciaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006F1992133D98E005F7DF8 /* AsistenciaViewController.swift */; };
 		A006F19E2133D9CC005F7DF8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A006F19C2133D9CC005F7DF8 /* SWRevealViewController.m */; };
+		A091DB2A21344D55000EB562 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A091DB2921344D55000EB562 /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		A006F19B2133D9CB005F7DF8 /* Proyecto iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Proyecto iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		A006F19C2133D9CC005F7DF8 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		A006F19D2133D9CC005F7DF8 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		A091DB2921344D55000EB562 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A091DB2A21344D55000EB562 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +116,7 @@
 		18F62FDD154CFC198EE73DCB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A091DB2921344D55000EB562 /* Alamofire.framework */,
 				3045F35521331D5D00F3167F /* Cosmos.framework */,
 				5C0B6AAE036EAFC0F40AE7AF /* Pods_Proyecto_iOS.framework */,
 			);
