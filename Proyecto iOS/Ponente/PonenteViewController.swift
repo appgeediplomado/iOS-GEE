@@ -23,15 +23,8 @@ class PonenteViewController: UIViewController {
         lblNombre.text = ponente?.nombre
         lblDescripcion.text = ponente?.descripcion
         tvBiodata.text = ponente?.biodata
-//        tvBiodata.layer.borderWidth = 0.5
-//        tvBiodata.layer.cornerRadius = 2
-//        tvBiodata.layer.borderColor = UIColor.lightGray.cgColor
         
-        //lblTitleBiodata.layer.borderWidth = 0.5
-        //lblTitleBiodata.layer.cornerRadius = 2
-        //lblTitleBiodata.layer.borderColor = UIColor.lightGray.cgColor
-        
-        //Para mostrar la imagen del capturado, si existe
+        //Para mostrar la imagen del ponente, si existe
         if let bytes = ponente?.imagen {
             if let image = UIImage(data:bytes) {
                 imgPonente.image = image

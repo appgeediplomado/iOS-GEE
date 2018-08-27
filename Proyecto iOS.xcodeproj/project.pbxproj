@@ -27,6 +27,7 @@
 		3045F3662133274300F3167F /* EvaluacionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3045F3652133274200F3167F /* EvaluacionViewController.swift */; };
 		3045F3682133275F00F3167F /* AbstractViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3045F3672133275F00F3167F /* AbstractViewCell.swift */; };
 		3045F36A2133276200F3167F /* PonenteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3045F3692133276200F3167F /* PonenteViewCell.swift */; };
+		307FF2A82134AE2000AFB477 /* logoGeeLetrero.png in Resources */ = {isa = PBXBuildFile; fileRef = 307FF2A72134AE1F00AFB477 /* logoGeeLetrero.png */; };
 		30C2716F2132E5FB007E58C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C2716E2132E5FB007E58C5 /* AppDelegate.swift */; };
 		30C271712132E5FB007E58C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C271702132E5FB007E58C5 /* ViewController.swift */; };
 		30C271742132E5FB007E58C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30C271722132E5FB007E58C5 /* Main.storyboard */; };
@@ -63,6 +64,7 @@
 		3045F3652133274200F3167F /* EvaluacionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluacionViewController.swift; sourceTree = "<group>"; };
 		3045F3672133275F00F3167F /* AbstractViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractViewCell.swift; sourceTree = "<group>"; };
 		3045F3692133276200F3167F /* PonenteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PonenteViewCell.swift; sourceTree = "<group>"; };
+		307FF2A72134AE1F00AFB477 /* logoGeeLetrero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoGeeLetrero.png; sourceTree = "<group>"; };
 		30C2716B2132E5FB007E58C5 /* Proyecto iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Proyecto iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30C2716E2132E5FB007E58C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30C271702132E5FB007E58C5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				30C271842132ECA1007E58C5 /* logoGee.png */,
+				307FF2A72134AE1F00AFB477 /* logoGeeLetrero.png */,
 				30C271862132ECB1007E58C5 /* logoEnallt.png */,
 				14B1DE6B21333EC4006F1BA6 /* fugitive.png */,
 				14B1DE6A21333EC4006F1BA6 /* linux-logo.png */,
@@ -322,6 +325,7 @@
 				30C2717C2132E605007E58C5 /* LaunchScreen.storyboard in Resources */,
 				30C271872132ECB1007E58C5 /* logoEnallt.png in Resources */,
 				30C271792132E605007E58C5 /* Assets.xcassets in Resources */,
+				307FF2A82134AE2000AFB477 /* logoGeeLetrero.png in Resources */,
 				3034080321332C8400AF9CA7 /* ios-reloj.png in Resources */,
 				303407FF21332C6800AF9CA7 /* ios-calendar.png in Resources */,
 				14B1DE6D21333EC4006F1BA6 /* messages.png in Resources */,

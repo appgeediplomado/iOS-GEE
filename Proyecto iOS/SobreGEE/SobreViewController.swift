@@ -13,20 +13,20 @@ class SobreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         menuButton.target = revealViewController()
         menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
         revealViewController().rightViewRevealWidth = 200
-        
+
         view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 

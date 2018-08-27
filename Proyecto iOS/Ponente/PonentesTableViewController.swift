@@ -51,64 +51,13 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
         
         view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
 
-        //Si se usa el searchController (No funciona con las secciones por letras)
-//        searchController.searchResultsUpdater = self
-//        self.tableView.tableHeaderView = searchController.searchBar
-//
-//        //Para que cuando se hace la busqueda, permita seleccionar los resultados filtrados
-//        searchController.obscuresBackgroundDuringPresentation = false
-//
-//        //En donde si se va a mostrar el searchController, solo aqui = true
-//        definesPresentationContext = true
-//
-//        //Para que no capitalice la primera letra
-//        searchController.searchBar.autocapitalizationType = .none   //Enumeración
-//
-//        //Para que no nos de sugerencias de autocorrección
-//        searchController.searchBar.autocorrectionType = .no //Enumeración
-        
         probarAlfabeto()
-        
-        
-        
-//        let title = UILabel()
-//        title.text = "FUGITIVO"
-//        
-//        let containerView = UIView()
-//        containerView.translatesAutoresizingMaskIntoConstraints = false
-//        // headerView is your actual content.
-//        containerView.addSubview(title)
-//        
-//        // 2.
-//        self.tableView.tableHeaderView = containerView
-//        // 3.
-//        containerView.centerXAnchor.constraint(equalTo: self.tableView.centerXAnchor).isActive = true
-//        containerView.widthAnchor.constraint(equalTo: self.tableView.widthAnchor).isActive = true
-//        containerView.topAnchor.constraint(equalTo: self.tableView.topAnchor).isActive = true
-//        // 4.
-//        self.tableView.tableHeaderView?.layoutIfNeeded()
-//        self.tableView.tableHeaderView = self.tableView.tableHeaderView
-        
-        
-        //Agregar una LABEL como HEADER de toda la tabla
-//        let headerView: UIView = UIView.init(frame: CGRect(x: 1, y: 50, width: 276, height: 30))
-//        headerView.backgroundColor = .red
-//
-//        let labelView: UILabel = UILabel.init(frame: CGRect(x: 4, y: 5, width: 276, height: 24))
-//        labelView.text = "My header view"
-//
-//        headerView.addSubview(labelView)
-//        headerView.addSubview(searchController.searchBar)
-//
-//        self.tableView.tableHeaderView = headerView
         
     }
     
     @objc func addTapped() {
         print("Se presiono el boton")
     }
-    
-    
     
     func probarAlfabeto() {
         registros = ["Audi", "Aston Martin","BMW", "Bugatti", "Bentley","Chevrolet", "Cadillac","Dodge","Ferrari", "Ford","Honda","Jaguar","Lamborghini","Mercedes", "Mazda","Nissan","Porsche","Rolls Royce","Toyota","Volkswagen"]
@@ -193,8 +142,6 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
             infoPonente = ponentes[indexPath.row]
         }
         
-        
-        //let infoFugitivo = fugitivos[indexPath.row]
         cell.textLabel?.text = infoPonente.nombre
 
         let image = UIImage(named: "icons8-name_filled")
@@ -269,13 +216,6 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-//        if segue.identifier == "verMapa" {
-//            let f = sender as! Fugitive
-//            let dvc = segue.destination as! MapViewController
-//
-//            dvc.elFugitivo = f
-//        }
-//        else {
             let dvc = segue.destination as! PonenteViewController
             let indexPath = self.tableView.indexPathForSelectedRow
             
@@ -286,7 +226,6 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
                 //Si por si acaso no encuentra alguno, devuelve el primero
                 dvc.ponente = ponentes[(indexPath?.row) ?? 0]
             }
-//        }
     }
     
 
