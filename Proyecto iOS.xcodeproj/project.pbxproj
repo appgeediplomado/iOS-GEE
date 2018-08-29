@@ -14,7 +14,6 @@
 		14B1DE6821333E42006F1BA6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B1DE6721333E42006F1BA6 /* CoreDataManager.swift */; };
 		14B1DE6D21333EC4006F1BA6 /* messages.png in Resources */ = {isa = PBXBuildFile; fileRef = 14B1DE6921333EC4006F1BA6 /* messages.png */; };
 		14B1DE6E21333EC4006F1BA6 /* linux-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 14B1DE6A21333EC4006F1BA6 /* linux-logo.png */; };
-		14B1DE6F21333EC4006F1BA6 /* fugitive.png in Resources */ = {isa = PBXBuildFile; fileRef = 14B1DE6B21333EC4006F1BA6 /* fugitive.png */; };
 		14B1DE7021333EC4006F1BA6 /* menuicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 14B1DE6C21333EC4006F1BA6 /* menuicon.png */; };
 		2A721A4E2134E7C5001CC793 /* UbicacionTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A721A4D2134E7C5001CC793 /* UbicacionTableTableViewController.swift */; };
 		303407FB21332ACC00AF9CA7 /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303407FA21332ACC00AF9CA7 /* CosmosDistrib.swift */; };
@@ -28,6 +27,7 @@
 		3045F3662133274300F3167F /* EvaluacionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3045F3652133274200F3167F /* EvaluacionViewController.swift */; };
 		3045F3682133275F00F3167F /* AbstractViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3045F3672133275F00F3167F /* AbstractViewCell.swift */; };
 		3045F36A2133276200F3167F /* PonenteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3045F3692133276200F3167F /* PonenteViewCell.swift */; };
+		3066A57D213729E600097AD1 /* logoEnallt.png in Resources */ = {isa = PBXBuildFile; fileRef = 3066A57C213729E600097AD1 /* logoEnallt.png */; };
 		307FF2A82134AE2000AFB477 /* logoGeeLetrero.png in Resources */ = {isa = PBXBuildFile; fileRef = 307FF2A72134AE1F00AFB477 /* logoGeeLetrero.png */; };
 		30C2716F2132E5FB007E58C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C2716E2132E5FB007E58C5 /* AppDelegate.swift */; };
 		30C271712132E5FB007E58C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C271702132E5FB007E58C5 /* ViewController.swift */; };
@@ -36,7 +36,6 @@
 		30C271792132E605007E58C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30C271782132E605007E58C5 /* Assets.xcassets */; };
 		30C2717C2132E605007E58C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30C2717A2132E605007E58C5 /* LaunchScreen.storyboard */; };
 		30C271852132ECA1007E58C5 /* logoGee.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C271842132ECA1007E58C5 /* logoGee.png */; };
-		30C271872132ECB1007E58C5 /* logoEnallt.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C271862132ECB1007E58C5 /* logoEnallt.png */; };
 		A006F1982133D970005F7DF8 /* SobreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006F1972133D970005F7DF8 /* SobreViewController.swift */; };
 		A006F19A2133D98E005F7DF8 /* AsistenciaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006F1992133D98E005F7DF8 /* AsistenciaViewController.swift */; };
 		A006F19E2133D9CC005F7DF8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A006F19C2133D9CC005F7DF8 /* SWRevealViewController.m */; };
@@ -51,7 +50,6 @@
 		14B1DE6721333E42006F1BA6 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		14B1DE6921333EC4006F1BA6 /* messages.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = messages.png; sourceTree = "<group>"; };
 		14B1DE6A21333EC4006F1BA6 /* linux-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linux-logo.png"; sourceTree = "<group>"; };
-		14B1DE6B21333EC4006F1BA6 /* fugitive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fugitive.png; sourceTree = "<group>"; };
 		14B1DE6C21333EC4006F1BA6 /* menuicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuicon.png; sourceTree = "<group>"; };
 		2A721A4D2134E7C5001CC793 /* UbicacionTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbicacionTableTableViewController.swift; sourceTree = "<group>"; };
 		303407FA21332ACC00AF9CA7 /* CosmosDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
@@ -66,6 +64,7 @@
 		3045F3652133274200F3167F /* EvaluacionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluacionViewController.swift; sourceTree = "<group>"; };
 		3045F3672133275F00F3167F /* AbstractViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractViewCell.swift; sourceTree = "<group>"; };
 		3045F3692133276200F3167F /* PonenteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PonenteViewCell.swift; sourceTree = "<group>"; };
+		3066A57C213729E600097AD1 /* logoEnallt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoEnallt.png; sourceTree = "<group>"; };
 		307FF2A72134AE1F00AFB477 /* logoGeeLetrero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoGeeLetrero.png; sourceTree = "<group>"; };
 		30C2716B2132E5FB007E58C5 /* Proyecto iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Proyecto iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30C2716E2132E5FB007E58C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,7 +75,6 @@
 		30C2717B2132E605007E58C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30C2717D2132E605007E58C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30C271842132ECA1007E58C5 /* logoGee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoGee.png; sourceTree = "<group>"; };
-		30C271862132ECB1007E58C5 /* logoEnallt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoEnallt.png; sourceTree = "<group>"; };
 		5C0B6AAE036EAFC0F40AE7AF /* Pods_Proyecto_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Proyecto_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ADA0B62A6069D7DE46799DE /* Pods-Proyecto iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proyecto iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Proyecto iOS/Pods-Proyecto iOS.release.xcconfig"; sourceTree = "<group>"; };
 		8FA07A69201429330345C807 /* Pods-Proyecto iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proyecto iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Proyecto iOS/Pods-Proyecto iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -225,8 +223,7 @@
 			children = (
 				30C271842132ECA1007E58C5 /* logoGee.png */,
 				307FF2A72134AE1F00AFB477 /* logoGeeLetrero.png */,
-				30C271862132ECB1007E58C5 /* logoEnallt.png */,
-				14B1DE6B21333EC4006F1BA6 /* fugitive.png */,
+				3066A57C213729E600097AD1 /* logoEnallt.png */,
 				14B1DE6A21333EC4006F1BA6 /* linux-logo.png */,
 				14B1DE6C21333EC4006F1BA6 /* menuicon.png */,
 				14B1DE6921333EC4006F1BA6 /* messages.png */,
@@ -332,11 +329,10 @@
 			files = (
 				3034080121332C7C00AF9CA7 /* ios-ubicacion.png in Resources */,
 				30C271852132ECA1007E58C5 /* logoGee.png in Resources */,
-				14B1DE6F21333EC4006F1BA6 /* fugitive.png in Resources */,
 				30C2717C2132E605007E58C5 /* LaunchScreen.storyboard in Resources */,
-				30C271872132ECB1007E58C5 /* logoEnallt.png in Resources */,
 				30C271792132E605007E58C5 /* Assets.xcassets in Resources */,
 				307FF2A82134AE2000AFB477 /* logoGeeLetrero.png in Resources */,
+				3066A57D213729E600097AD1 /* logoEnallt.png in Resources */,
 				3034080321332C8400AF9CA7 /* ios-reloj.png in Resources */,
 				303407FF21332C6800AF9CA7 /* ios-calendar.png in Resources */,
 				14B1DE6D21333EC4006F1BA6 /* messages.png in Resources */,
