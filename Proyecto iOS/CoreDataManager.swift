@@ -122,34 +122,55 @@ class CoreDataManager: NSObject {
         return result
     }
     
-    
+    func existeRegistroPonente(conId:Int16) -> Bool {
+        print("ID A VERIFICAR: \(conId)")
+        
+        var result:[Ponente] = []
+        let fetch = NSFetchRequest<Ponente>(entityName:"Ponente")
+        let filtro = NSPredicate(format:"id == %d", conId)
+        fetch.predicate = filtro
+        do {
+            result = try
+                persistentContainer.viewContext.fetch(fetch)
+        }
+        catch {
+            print("FALLO ALGO EN LA BD")
+            //No funciona el fetch, podrían ser problemas con la conexión a la BD
+        }
+        return result.count > 0
+    }
     
     //DATOS DE LOS PONENTES
-    final let urlStringPonentes = "https://my.api.mockaroo.com/ponentes.json?key=baa58550"
+    //final let urlStringPonentes = "https://my.api.mockaroo.com/ponentes.json?key=baa58550"
+    final let urlStringPonentes = "http://roman.cele.unam.mx/wsgee/ponentes"
 
     func cargaDatosPonentes () {
-print("En caragar datos")
+//print("En cargar datos")
         if let urljson = URL(string:urlStringPonentes) {
-print("if let urlJson")
+//print("if let urlJson")
             Alamofire.request(urljson).responseJSON { (response) in
-                //let tmp = response.result.value as! [String:Any]
-                let tmp = response.result.value as! [Any]
-print(tmp)
-                if let jsonArray = tmp as? [[String:Any]] {
+                let tmp = response.result.value as! [String:Any]
+                //let tmp = response.result.value as! [Any]
+//print(tmp)
+                if let jsonArray = tmp["ponentes"] as? [[String:Any]] {
                     //if let jsonArray = tmp["response"] as? [Any] {
-print(jsonArray)
+//print(jsonArray)
                     for persona:[String:Any] in jsonArray {
-                        
-                        //let pId = Int16((persona["fugitiveID"] as? Int) ?? 0)
-                        //if !(self.existeRegistro(conId: pId)) {
-                        
-                        let r:Ponente = NSEntityDescription.insertNewObject(forEntityName:"Ponente", into:self.persistentContainer.viewContext) as! Ponente
-                        r.id = Int16((persona["id"] as? NSNumber) ?? 0)
-                        r.nombre = (persona["nombre"] as? String) ?? ""
-                        r.descripcion = (persona["descripcion"] as? String) ?? ""
-                        r.biodata = (persona["biodata"] as? String) ?? ""
-                        
-                        //}
+//print(persona["id"])
+                        var pId:Int16 = 0
+                        if let nsid: String = persona["id"] as? String {
+                            pId = Int16(nsid) ?? 0
+                        }
+//print(pId)
+                        if !(self.existeRegistroPonente(conId: pId)) {
+                            print("NO EXISTE EL REGISTRO \(pId)")
+
+                            let r:Ponente = NSEntityDescription.insertNewObject(forEntityName:"Ponente", into:self.persistentContainer.viewContext) as! Ponente
+                            r.id = pId
+                            r.nombre = (persona["nombre"] as? String) ?? ""
+                            r.descripcion = (persona["institucion"] as? String) ?? ""
+                            r.biodata = (persona["biodata"] as? String) ?? "Biodata DEFAULT de la Persona"
+                        }
                     }
                     self.saveContext()
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "kNuevosDatos"), object: nil)

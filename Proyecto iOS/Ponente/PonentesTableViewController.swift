@@ -11,25 +11,34 @@ import CoreData
 
 class PonentesTableViewController: UITableViewController, UISearchResultsUpdating {
 
-    var alfabetoDictionary = [String: [String]]()
-    var seccionesTitles = [String]()
-    var registros = [String]()
+    //Para definir las secciones de la tabla y los registros de cada seccion
+    var registrosPorSeccion = [String: [Ponente]]()
+    var titulosSecciones = [String]()
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
-    
     var ponentes:[Ponente] = []
     var ponentesFiltrados:[Ponente] = [] //Para las busquedas
+
+    //Para implementar refresh automático al hacer "swipe down"
+    let refreshcontrol = UIRefreshControl()
 
     //Para implementar la búsqueda
     //Los resultados de la búsqueda se muestran aqui mismo, asi que se le pasa nil
     var searchController:UISearchController = UISearchController(searchResultsController: nil)
 
+    /**
+    * Filtra la lista de registros dependiendo la busqueda por nombre
+    */
     func updateSearchResults(for searchController: UISearchController) {
         if let textoAbuscar = searchController.searchBar.text {
             ponentesFiltrados = ponentes.filter({ (r:Ponente) -> Bool in
                 return ((r.nombre?.lowercased().contains(textoAbuscar.lowercased()))!)
             })
+            
+            //Volvemos a redefinir los titulos y valores de cada seccion
+            //usando ahora los registros filtrados.
+            definirSeccionesTabla()
         }
         self.tableView.reloadData() //Importante para que filtre la tabla
     }
@@ -40,7 +49,12 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
 
         self.tableView.reloadData()
         
-        //self.refreshControl?.endRefreshing()    //Para que no quede cargando infinitamente
+        self.refreshControl?.endRefreshing()    //Para que no quede cargando infinitamente
+    }
+    
+    @objc func actualizaDatosServer() {
+        //Aqui comienza la recarga, y automáticamente presenta un objeto UIActivityIndicator
+        CoreDataManager.instance.cargaDatosPonentes() //CargaMasDatos del json al llamar a actualizaTabla
     }
 
     override func viewDidLoad() {
@@ -50,47 +64,92 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
         revealViewController().rightViewRevealWidth = 200
         
         view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-
-        probarAlfabeto()
         
+        ////////////////////////////////////////////////////////////////////////
+        ///////////////////////////Para las busquedas///////////////////////////
+        ////////////////////////////////////////////////////////////////////////
+        searchController.searchResultsUpdater = self
+        self.tableView.tableHeaderView = searchController.searchBar
+        
+        //Para que cuando se hace la busqueda, permita seleccionar los resultados filtrados
+        searchController.obscuresBackgroundDuringPresentation = false
+        
+        //En donde si se va a mostrar el searchController, solo aqui = true
+        definesPresentationContext = true
+        
+        //Para que no capitalice la primera letra
+        searchController.searchBar.autocapitalizationType = .none   //Enumeración
+        
+        //Para que no nos de sugerencias de autocorrección
+        searchController.searchBar.autocorrectionType = .no //Enumeración
+        
+        ////////////////////////////////////////////////////////////////////////
+        ///////////////////////////Para las busquedas///////////////////////////
+        ////////////////////////////////////////////////////////////////////////
+        
+        ///////////////////////////CONFIGURACION Para el refresh del swipe down///////////////////////////
+        //configurar que método invocar para refrescar datos
+        refreshcontrol.addTarget(self, action: #selector(actualizaDatosServer), for: .valueChanged)
+        //refreshControl es una property de UITableViewController
+        self.refreshControl = refreshcontrol
+        
+        ///////////////////////////CARGA DE DATOS INICIAL///////////////////////////
+        //Solo se carga la lista una sola vez, la siguientes veces sera hasta que el usuario recargue la lista
+        //Si no hay datos en la BD, los trae del server
+        self.ponentes = CoreDataManager.instance.allPonentes() //En viewDidAppear normalmente
+        if ponentes.count <= 0 {
+            print("Va a traer mas datos")
+            CoreDataManager.instance.cargaDatosPonentes() //CargaMasDatos del json al llamar a actualizaTabla
+        }
+        definirSeccionesTabla()
     }
     
     @objc func addTapped() {
         print("Se presiono el boton")
     }
     
-    func probarAlfabeto() {
-        registros = ["Audi", "Aston Martin","BMW", "Bugatti", "Bentley","Chevrolet", "Cadillac","Dodge","Ferrari", "Ford","Honda","Jaguar","Lamborghini","Mercedes", "Mazda","Nissan","Porsche","Rolls Royce","Toyota","Volkswagen"]
+    /**
+     * Se recorren los registros, se verifica la primera letra del atributo nombre para
+     * saber que secciones de la tabla se presentaran (Cada seccion es una letra del alfabeto)
+     *
+     * Se verifica la primera letra de cada nombre de los ponentes y se guardan los registros
+     * en el arreglo de registrosPorSeccion
+     */
+    func definirSeccionesTabla() {
+        registrosPorSeccion = [String: [Ponente]]()
+        titulosSecciones = [String]()
+
+        //to-Do
+        //¿Verificar que ponentes no venga vacio?
         
+        var registros:[Ponente] = []
+        if !((searchController.searchBar.text?.isEmpty)!) {
+            registros = ponentesFiltrados
+        } else {
+            registros = ponentes
+        }
+
         for registro in registros {
-            let llave = String(registro.prefix(1))
-            if var valores = alfabetoDictionary[llave] {
+            let letraInicial = String(registro.nombre!.prefix(1))
+            if var valores = registrosPorSeccion[letraInicial] {
                 valores.append(registro)
-                alfabetoDictionary[llave] = valores
+                registrosPorSeccion[letraInicial] = valores
             } else {
-                alfabetoDictionary[llave] = [registro]
+                registrosPorSeccion[letraInicial] = [registro]
             }
         }
-        
-        // 2
-        seccionesTitles = [String](alfabetoDictionary.keys)
-        seccionesTitles = seccionesTitles.sorted(by: { $0 < $1 })
+
+        titulosSecciones = [String](registrosPorSeccion.keys)
+        titulosSecciones = titulosSecciones.sorted(by: { $0 < $1 })
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        //vA UNA U OTRA DE ESTAS LINEAS
-        actualizaTabla()
-        if ponentes.count <= 0 {
-            print("Va a traer mas datos")
-            CoreDataManager.instance.cargaDatosPonentes() //CargaMasDatos del json al llamar a actualizaTabla
-        }
-
         NotificationCenter.default.addObserver(self, selector:#selector(actualizaTabla), name:NSNotification.Name(rawValue: "kNuevosDatos"), object: nil)
 
-        //Recargar la tabla (sus datos) ya que esta capturado y actualizada la información
-        self.tableView.reloadData()
+        //Recargar los datos de la tabla
+        //self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,46 +157,48 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
+    /**
+     * El numero de secciones lo maneja la variable titulosSecciones
+     * la cual se establece en definirSeccionesTabla()
+     */
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        //return 1
-        return seccionesTitles.count
+        return titulosSecciones.count
     }
 
+    /**
+     * El numero de registros por seccion lo maneja la variable registrosPorSeccion
+     * la cual se establece en definirSeccionesTabla()
+     */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        
-        //let llave = seccionesTitles[section]
 
-        //Depende si hay una bsqueda activa
-        if !((searchController.searchBar.text?.isEmpty)!) {
-            return ponentesFiltrados.count
-        }
-        else /*if let valores = alfabetoDictionary[llave] */{
-            //return valores.count
-        }
+        let letra = titulosSecciones[section]
 
-        return ponentes.count
+        //Si hay una bsqueda activa, tambien se busca en la variable registrosPorSeccion
+        //Esta se actualiza al ir haciendo busquedas para decidir si busca en ponentes
+        //o en ponentesFiltrados
+        if let valoresPorSeccion = registrosPorSeccion[letra] {
+            return valoresPorSeccion.count
+        } else {
+            return ponentes.count
+        }
     }
 
+    /**
+     * La informacion de cada celda la obtenemos de la variable registrosPorSeccion
+     * la cual se establece en definirSeccionesTabla()
+     */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "rCell", for: indexPath)
 
         // Configure the cell...
-        //Dependiendo de si hay una búsqueda o no
         let infoPonente:Ponente
-
-//        let llave = seccionesTitles[indexPath.section]
-//        if let valores = alfabetoDictionary[llave] {
-//            cell.textLabel?.text = valores[indexPath.row]
-//        }
+        let letra = titulosSecciones[indexPath.section]
         
-        
-        //Depende si hay una bsqueda activa
-        if !((searchController.searchBar.text?.isEmpty)!) {
-            infoPonente = ponentesFiltrados[indexPath.row]
+        //Si hay una bsqueda activa, tambien se busca en la variable registrosPorSeccion
+        //Esta se actualiza al ir haciendo busquedas para decidir si busca en ponentes
+        //o en ponentesFiltrados
+        if let valoresPorSeccion = registrosPorSeccion[letra] {
+            infoPonente = valoresPorSeccion[indexPath.row]
         } else {
             infoPonente = ponentes[indexPath.row]
         }
@@ -168,8 +229,12 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
         return cell
     }
 
+    /**
+     * El titulo de cada seccion lo maneja la variable titulosSecciones
+     * la cual se establece en definirSeccionesTabla()
+     */
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return seccionesTitles[section]
+        return titulosSecciones[section]
     }
 
 
@@ -216,16 +281,20 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-            let dvc = segue.destination as! PonenteViewController
-            let indexPath = self.tableView.indexPathForSelectedRow
-            
-            //para que nos lleve al detalle correcto
-            if !((searchController.searchBar.text?.isEmpty)!) {
-                dvc.ponente = ponentesFiltrados[(indexPath?.row)!]
-            } else {
-                //Si por si acaso no encuentra alguno, devuelve el primero
-                dvc.ponente = ponentes[(indexPath?.row) ?? 0]
-            }
+        let dvc = segue.destination as! PonenteViewController
+        let indexPath = self.tableView.indexPathForSelectedRow
+
+        let letra = titulosSecciones[(indexPath?.section)!]
+        
+        //Si hay una bsqueda activa, tambien se busca en la variable registrosPorSeccion
+        //Esta se actualiza al ir haciendo busquedas para decidir si busca en ponentes
+        //o en ponentesFiltrados
+        if let valoresPorSeccion = registrosPorSeccion[letra] {
+             dvc.ponente = valoresPorSeccion[(indexPath?.row)!]
+        } else {
+            //Si por si acaso no encuentra alguno, devuelve el primero
+            dvc.ponente = ponentes[(indexPath?.row) ?? 0]
+        }
     }
     
 
