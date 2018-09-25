@@ -96,7 +96,6 @@ class CoreDataManager: NSObject {
     
     func saveContext () {
         if (managedObjectContext?.hasChanges)! {
-            print("TIENE CAMBIOS")
             do {
                 try managedObjectContext?.save()
                 print("GUARDO")
@@ -109,16 +108,19 @@ class CoreDataManager: NSObject {
         }
     }
 
-    //Traer los datos de todos los ponentes de la BD
+    // Traer los datos de todos los ponentes de la BD
     func allPonentes() -> [Ponente] {
         var result:[Ponente] = []
+        
         let fetch = NSFetchRequest<Ponente>(entityName: "Ponente")
+        
         do {
             result = try (managedObjectContext?.fetch(fetch))!
         }
         catch {
             print(error.localizedDescription)
         }
+
         return result
     }
     
@@ -130,8 +132,7 @@ class CoreDataManager: NSObject {
         let filtro = NSPredicate(format:"id == %d", conId)
         fetch.predicate = filtro
         do {
-            result = try
-                persistentContainer.viewContext.fetch(fetch)
+            result = try persistentContainer.viewContext.fetch(fetch)
         }
         catch {
             print("FALLO ALGO EN LA BD")
@@ -149,6 +150,11 @@ class CoreDataManager: NSObject {
         if let urljson = URL(string:urlStringPonentes) {
 //print("if let urlJson")
             Alamofire.request(urljson).responseJSON { (response) in
+                guard response.result.isSuccess else {
+                    print("Error al tarer datos")
+                    return
+                }
+                
                 let tmp = response.result.value as! [String:Any]
                 //let tmp = response.result.value as! [Any]
 //print(tmp)

@@ -10,14 +10,14 @@ import UIKit
 import CoreData
 
 class PonentesTableViewController: UITableViewController, UISearchResultsUpdating {
-
+    // Menú hamburguesa
+    @IBOutlet weak var menuButton: UIBarButtonItem!
+    
     //Para definir las secciones de la tabla y los registros de cada seccion
     var registrosPorSeccion = [String: [Ponente]]()
     var titulosSecciones = [String]()
     
-    @IBOutlet weak var menuButton: UIBarButtonItem!
-    
-    var ponentes:[Ponente] = []
+    var ponentes:[Ponente] = [] // Lista de ponentes
     var ponentesFiltrados:[Ponente] = [] //Para las busquedas
 
     //Para implementar refresh automático al hacer "swipe down"
@@ -40,15 +40,15 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
             //usando ahora los registros filtrados.
             definirSeccionesTabla()
         }
+        
         self.tableView.reloadData() //Importante para que filtre la tabla
     }
 
     @objc func actualizaTabla() {
         self.ponentes = CoreDataManager.instance.allPonentes() //En viewDidAppear normalmente
-        print(ponentes)
+        definirSeccionesTabla()
 
         self.tableView.reloadData()
-        
         self.refreshControl?.endRefreshing()    //Para que no quede cargando infinitamente
     }
     
@@ -59,10 +59,10 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         menuButton.target = revealViewController()
         menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
         revealViewController().rightViewRevealWidth = 200
-        
         view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
         ////////////////////////////////////////////////////////////////////////
@@ -90,6 +90,7 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
         ///////////////////////////CONFIGURACION Para el refresh del swipe down///////////////////////////
         //configurar que método invocar para refrescar datos
         refreshcontrol.addTarget(self, action: #selector(actualizaDatosServer), for: .valueChanged)
+        
         //refreshControl es una property de UITableViewController
         self.refreshControl = refreshcontrol
         
@@ -97,11 +98,15 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
         //Solo se carga la lista una sola vez, la siguientes veces sera hasta que el usuario recargue la lista
         //Si no hay datos en la BD, los trae del server
         self.ponentes = CoreDataManager.instance.allPonentes() //En viewDidAppear normalmente
+        
         if ponentes.count <= 0 {
             print("Va a traer mas datos")
-            CoreDataManager.instance.cargaDatosPonentes() //CargaMasDatos del json al llamar a actualizaTabla
+            //CoreDataManager.instance.cargaDatosPonentes() //CargaMasDatos del json al llamar a actualizaTabla
+            //self.actualizaTabla()
+            self.actualizaDatosServer()
         }
-        definirSeccionesTabla()
+        
+        //definirSeccionesTabla()
     }
     
     @objc func addTapped() {
@@ -145,11 +150,7 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         NotificationCenter.default.addObserver(self, selector:#selector(actualizaTabla), name:NSNotification.Name(rawValue: "kNuevosDatos"), object: nil)
-
-        //Recargar los datos de la tabla
-        //self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
