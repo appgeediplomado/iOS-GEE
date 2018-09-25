@@ -428,7 +428,6 @@
                             <constraint firstItem="Lt0-jg-YPr" firstAttribute="leading" secondItem="52O-d6-TbH" secondAttribute="leading" id="WM9-R1-1Vp"/>
                             <constraint firstItem="52O-d6-TbH" firstAttribute="trailing" secondItem="Lt0-jg-YPr" secondAttribute="trailing" id="hTi-Yu-bAi"/>
                             <constraint firstItem="Lt0-jg-YPr" firstAttribute="top" secondItem="Aaz-7n-vtZ" secondAttribute="topMargin" id="pZZ-Ie-jAo"/>
-                            <constraint firstItem="Lt0-jg-YPr" firstAttribute="centerY" secondItem="Aaz-7n-vtZ" secondAttribute="centerY" id="rlS-Uf-yPw"/>
                             <constraint firstItem="Lt0-jg-YPr" firstAttribute="centerX" secondItem="Aaz-7n-vtZ" secondAttribute="centerX" id="sA6-F4-wof"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="52O-d6-TbH"/>
@@ -1474,8 +1473,8 @@ Ing. José Luis Vázquez Torres</string>
                                     <color key="textColor" red="0.49303418399999999" green="0.38303112979999998" blue="0.031289480629999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1 al 3 de agosto de 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXR-jD-hB8">
-                                    <rect key="frame" x="81" y="87" width="158" height="17"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1 al 3 de agosto de 2018" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXR-jD-hB8">
+                                    <rect key="frame" x="94" y="87" width="200" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <color key="textColor" red="0.001668639365" green="0.25977289679999999" blue="0.40934181209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>

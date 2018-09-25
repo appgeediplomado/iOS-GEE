@@ -21,7 +21,7 @@ class PonenteViewController: UIViewController {
         super.viewWillAppear(animated)
 
         lblNombre.text = ponente?.nombre
-        lblDescripcion.text = ponente?.descripcion
+        lblDescripcion.text = ponente?.institucion
         tvBiodata.text = ponente?.biodata
         
         //Para mostrar la imagen del ponente, si existe

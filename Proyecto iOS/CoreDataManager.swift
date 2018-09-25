@@ -125,12 +125,11 @@ class CoreDataManager: NSObject {
     }
     
     func existeRegistroPonente(conId:Int16) -> Bool {
-        print("ID A VERIFICAR: \(conId)")
-        
         var result:[Ponente] = []
-        let fetch = NSFetchRequest<Ponente>(entityName:"Ponente")
+        let fetch = NSFetchRequest<Ponente>(entityName:Constants.ENTITY_PONENTE)
         let filtro = NSPredicate(format:"id == %d", conId)
         fetch.predicate = filtro
+        
         do {
             result = try persistentContainer.viewContext.fetch(fetch)
         }
@@ -138,50 +137,68 @@ class CoreDataManager: NSObject {
             print("FALLO ALGO EN LA BD")
             //No funciona el fetch, podrían ser problemas con la conexión a la BD
         }
+        
         return result.count > 0
     }
     
     //DATOS DE LOS PONENTES
-    //final let urlStringPonentes = "https://my.api.mockaroo.com/ponentes.json?key=baa58550"
-    final let urlStringPonentes = "http://roman.cele.unam.mx/wsgee/ponentes"
 
     func cargaDatosPonentes () {
-//print("En cargar datos")
-        if let urljson = URL(string:urlStringPonentes) {
-//print("if let urlJson")
+        if let urljson = URL(string:Constants.WS_PONENTES_URL) {
             Alamofire.request(urljson).responseJSON { (response) in
+                // Prevenir el caso de que no haya conexión
                 guard response.result.isSuccess else {
                     print("Error al tarer datos")
                     return
                 }
                 
                 let tmp = response.result.value as! [String:Any]
-                //let tmp = response.result.value as! [Any]
-//print(tmp)
                 if let jsonArray = tmp["ponentes"] as? [[String:Any]] {
-                    //if let jsonArray = tmp["response"] as? [Any] {
-//print(jsonArray)
                     for persona:[String:Any] in jsonArray {
-//print(persona["id"])
                         var pId:Int16 = 0
+                        
                         if let nsid: String = persona["id"] as? String {
                             pId = Int16(nsid) ?? 0
                         }
-//print(pId)
-                        if !(self.existeRegistroPonente(conId: pId)) {
-                            print("NO EXISTE EL REGISTRO \(pId)")
 
-                            let r:Ponente = NSEntityDescription.insertNewObject(forEntityName:"Ponente", into:self.persistentContainer.viewContext) as! Ponente
-                            r.id = pId
-                            r.nombre = (persona["nombre"] as? String) ?? ""
-                            r.descripcion = (persona["institucion"] as? String) ?? ""
-                            r.biodata = (persona["biodata"] as? String) ?? "Biodata DEFAULT de la Persona"
+                        if !self.existeRegistroPonente(conId: pId) {
+                            let ponente:Ponente = NSEntityDescription.insertNewObject(
+                                forEntityName: Constants.ENTITY_PONENTE,
+                                into: self.persistentContainer.viewContext) as! Ponente
+
+                            ponente.id = pId
+                            ponente.nombre = (persona["nombre"] as? String) ?? ""
+                            ponente.apellidos = (persona["apellidos"] as? String) ?? ""
+                            ponente.institucion = (persona["institucion"] as? String) ?? ""
+                            ponente.biodata = (persona["biodata"] as? String) ?? "Biodata DEFAULT de la Persona"
                         }
                     }
+                    
                     self.saveContext()
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "kNuevosDatos"), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.NEW_DATA_MESSAGE), object: nil)
                 }
             }
         }
     }
+    
+    func cargaTrabajos() {
+        if let urlJSON = URL(string: Constants.WS_TRABAJOS_URL) {
+            Alamofire.request(urlJSON).responseJSON { (response) in
+                guard response.result.isSuccess else {
+                    print("Error al tarer datos")
+                    return
+                }
+
+                let result = response.result.value as! [String:Any]
+                
+                if let trabajos = result["trabajos"] as? [[String:Any]] {
+                    for datosTrabajo: [String:Any] in trabajos {
+                        let trabajoId = Int16((datosTrabajo["id"] as? Int) ?? 0)
+                    }
+                }
+            }
+        }
+    }
+    
+    func existeTrabajo(conId: )
 }

@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Ponente" representedClassName="Ponente" syncable="YES" codeGenerationType="class">
+        <attribute name="apellidos" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="biodata" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="descripcion" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="imagen" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="institucion" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nombre" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Trabajo" representedClassName="Trabajo" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="modalidad" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sinopsis" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="titulo" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ponente" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ponente" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Ponente" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Ponente" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="Trabajo" positionX="-63" positionY="18" width="128" height="120"/>
     </elements>
 </model>

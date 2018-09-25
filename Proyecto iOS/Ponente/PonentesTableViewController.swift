@@ -98,15 +98,12 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
         //Solo se carga la lista una sola vez, la siguientes veces sera hasta que el usuario recargue la lista
         //Si no hay datos en la BD, los trae del server
         self.ponentes = CoreDataManager.instance.allPonentes() //En viewDidAppear normalmente
+        definirSeccionesTabla()
         
         if ponentes.count <= 0 {
             print("Va a traer mas datos")
-            //CoreDataManager.instance.cargaDatosPonentes() //CargaMasDatos del json al llamar a actualizaTabla
-            //self.actualizaTabla()
             self.actualizaDatosServer()
         }
-        
-        //definirSeccionesTabla()
     }
     
     @objc func addTapped() {
@@ -192,7 +189,7 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
         let cell = tableView.dequeueReusableCell(withIdentifier: "rCell", for: indexPath)
 
         // Configure the cell...
-        let infoPonente:Ponente
+        let infoPonente: Ponente
         let letra = titulosSecciones[indexPath.section]
         
         //Si hay una bsqueda activa, tambien se busca en la variable registrosPorSeccion
@@ -204,7 +201,7 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
             infoPonente = ponentes[indexPath.row]
         }
         
-        cell.textLabel?.text = infoPonente.nombre
+        cell.textLabel?.text = infoPonente.nombre! + " " + infoPonente.apellidos!
 
         let image = UIImage(named: "icons8-name_filled")
         cell.imageView?.image = image
@@ -220,8 +217,8 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
         ///////////////////////////////////////////////
         //Se cambia la propiedad Style del TableViewCell a Subtitle para que ponga el detalle
         if let _ = cell.detailTextLabel {
-            if let descripcion = infoPonente.descripcion {
-                cell.detailTextLabel?.text = "\(descripcion)"
+            if let institucion = infoPonente.institucion {
+                cell.detailTextLabel?.text = "\(institucion)"
             }
         }
 
