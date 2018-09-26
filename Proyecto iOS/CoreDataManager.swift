@@ -181,6 +181,20 @@ class CoreDataManager: NSObject {
         }
     }
     
+    func allTrabajos() -> [Trabajo] {
+        var result: [Trabajo] = []
+        let fetch = NSFetchRequest<Trabajo>(entityName: Constants.ENTITY_TRABAJO)
+        
+        do {
+            result = try persistentContainer.viewContext.fetch(fetch)
+        }
+        catch {
+            print(error.localizedDescription)
+        }
+        
+        return result
+    }
+    
     func cargaTrabajos() {
         if let urlJSON = URL(string: Constants.WS_TRABAJOS_URL) {
             Alamofire.request(urlJSON).responseJSON { (response) in
@@ -193,12 +207,46 @@ class CoreDataManager: NSObject {
                 
                 if let trabajos = result["trabajos"] as? [[String:Any]] {
                     for datosTrabajo: [String:Any] in trabajos {
-                        let trabajoId = Int16((datosTrabajo["id"] as? Int) ?? 0)
+                        let trabajoId = Int16(datosTrabajo["id"] as! String)!
+                        
+                        if !self.existeTrabajo(conId: trabajoId) {
+                            let trabajo: Trabajo = NSEntityDescription.insertNewObject(
+                                forEntityName: "Trabajo",
+                                into: self.persistentContainer.viewContext) as! Trabajo
+                            
+                            trabajo.id = trabajoId
+                            trabajo.titulo = datosTrabajo["titulo"] as? String
+                            trabajo.modalidad = datosTrabajo["modalidad"] as? String
+                            trabajo.nombrePonente = datosTrabajo["nombrePonente"] as? String
+                            trabajo.lugar = datosTrabajo["lugar"] as? String
+                            
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd"
+                            trabajo.fecha = dateFormatter.date(from: datosTrabajo["fecha"] as! String)
+                            
+                            trabajo.hora = datosTrabajo["hora"] as? String
+                        }
                     }
+
+                    self.saveContext()
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.NEW_DATA_MESSAGE), object: nil)
                 }
             }
         }
     }
     
-    func existeTrabajo(conId: )
+    func existeTrabajo(conId: Int16) -> Bool {
+        var result: [Trabajo] = []
+        
+        let fetch = NSFetchRequest<Trabajo>(entityName: Constants.ENTITY_TRABAJO)
+        fetch.predicate = NSPredicate(format: "id == %d", conId)
+        
+        do {
+            result = try persistentContainer.viewContext.fetch(fetch)
+        } catch {
+            print("Error al acceder a la BD")
+        }
+        
+        return result.count > 0
+    }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class ActividadViewController: UITableViewController {
-    var actividad: [String:String]?
+    var trabajo: Trabajo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,28 +52,31 @@ class ActividadViewController: UITableViewController {
             
             switch indexPath.row {
             case 0:
-                cell.textLabel?.text = self.actividad?["titulo"]
+                cell.textLabel?.text = self.trabajo?.titulo
                 
             case 1:
-                if let fecha = self.actividad?["fecha"] {
+                if let fecha = self.trabajo?.fecha {
                     let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd"
-                    dateFormatter.locale = NSLocale(localeIdentifier: "es_MX") as Locale
+                    dateFormatter.dateFormat = "EEEE d 'de' MMMM 'de' yyyy"
+                    cell.textLabel?.text = dateFormatter.string(from: fecha)
                     
-                    if let date = dateFormatter.date(from: fecha) {
-                        dateFormatter.dateFormat = "EEEE d 'de' MMMM 'de' yyyy"
-                        cell.textLabel?.text = dateFormatter.string(from: date)
-                    }
+//                    dateFormatter.dateFormat = "yyyy-MM-dd"
+//                    dateFormatter.locale = NSLocale(localeIdentifier: "es_MX") as Locale
+                    
+//                    if let date = dateFormatter.date(from: fecha) {
+//                        dateFormatter.dateFormat = "EEEE d 'de' MMMM 'de' yyyy"
+//                        cell.textLabel?.text = dateFormatter.string(from: date)
+//                    }
                 }
 
                 cell.imageView?.image = UIImage(named: "ios-calendar")
                 
             case 2:
-                cell.textLabel?.text = self.actividad?["hora"]
+                cell.textLabel?.text = self.trabajo?.hora
                 cell.imageView?.image = UIImage(named: "ios-reloj")
 
             case 3:
-                cell.textLabel?.text = self.actividad?["lugar"]
+                cell.textLabel?.text = self.trabajo?.lugar
                 cell.imageView?.image = UIImage(named: "ios-ubicacion")
                 
             case 4:
@@ -96,7 +99,7 @@ class ActividadViewController: UITableViewController {
         } else if indexPath.section == 1 { // Ponentes
             cell = tableView.dequeueReusableCell(withIdentifier: "celdaPonente", for: indexPath)
             let celdaPonente = cell as! PonenteViewCell
-            celdaPonente.labelNombre.text = actividad?["ponente"]
+            celdaPonente.labelNombre.text = trabajo?.nombrePonente
         } else { // Abstract
             cell = tableView.dequeueReusableCell(withIdentifier: "celdaAbstract", for: indexPath)
         }
@@ -118,7 +121,7 @@ class ActividadViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return actividad?["tipo"]
+            return trabajo?.modalidad
         } else if section == 1 {
             return "Ponente"
         } else {
@@ -175,7 +178,7 @@ class ActividadViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueEvaluacion" {
             let controller = segue.destination as! EvaluacionViewController
-            controller.actividad = actividad
+            controller.trabajo = trabajo
         }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

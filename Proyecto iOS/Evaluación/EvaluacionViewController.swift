@@ -14,13 +14,13 @@ class EvaluacionViewController: UIViewController {
     @IBOutlet weak var starsExperienciaPonente: CosmosView!
     @IBOutlet weak var starsRelevanciaPonencia: CosmosView!
     
-    var actividad: [String:String]?
+    var trabajo: Trabajo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
 
-        labelTitulo.text = actividad?["titulo"]
+        labelTitulo.text = trabajo?.titulo
         // Do any additional setup after loading the view.
     }
 
