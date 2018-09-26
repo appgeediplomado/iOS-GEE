@@ -196,8 +196,12 @@ class CoreDataManager: NSObject {
     }
     
     func cargaTrabajos() {
+        let headers: HTTPHeaders = [
+            "Gee-Timestamp": "2018.09.26 13:16"
+        ]
+        
         if let urlJSON = URL(string: Constants.WS_TRABAJOS_URL) {
-            Alamofire.request(urlJSON).responseJSON { (response) in
+            Alamofire.request(urlJSON, headers:headers).responseJSON { (response) in
                 guard response.result.isSuccess else {
                     print("Error al tarer datos")
                     return
