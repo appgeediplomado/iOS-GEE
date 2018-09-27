@@ -35,7 +35,7 @@ class ProgramaViewController: UITableViewController {
         
         prepareRefreshControl()
         
-        // Cargar datos locales en case de haberlos
+        // Cargar datos locales en caso de haberlos
         actividades = CoreDataManager.instance.allTrabajos()
         
         // Si no hay datos locales al comienzo, mandar traer desde el servidor
@@ -43,34 +43,27 @@ class ProgramaViewController: UITableViewController {
             self.refreshControl?.programaticallyBeginRefreshing(in: self.tableView)
             self.refreshData();
         }
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(
             self, selector: #selector(nuevosDatos),
-            name: NSNotification.Name(rawValue: Constants.NEW_DATA_MESSAGE), object: nil)
+            name: NSNotification.Name(rawValue: Constants.DATA_NUEVOS_TRABAJOS), object: nil)
     }
 
+    // Dispose of any resources that can be recreated.
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return actividades.count
     }
 
@@ -116,7 +109,8 @@ class ProgramaViewController: UITableViewController {
     }
     
     @objc func refreshData() {
-        CoreDataManager.instance.cargaTrabajos()
+//        CoreDataManager.instance.cargaTrabajos()
+        ServerDataManager.instance.cargaTrabajos()
     }
     
     @objc func nuevosDatos() {

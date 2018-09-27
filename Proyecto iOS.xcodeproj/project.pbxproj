@@ -37,6 +37,7 @@
 		30C271792132E605007E58C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30C271782132E605007E58C5 /* Assets.xcassets */; };
 		30C2717C2132E605007E58C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30C2717A2132E605007E58C5 /* LaunchScreen.storyboard */; };
 		30C271852132ECA1007E58C5 /* logoGee.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C271842132ECA1007E58C5 /* logoGee.png */; };
+		30D441ED215D1DDC0075182B /* ServerDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D441EC215D1DDC0075182B /* ServerDataManager.swift */; };
 		75E8EC9832F24117DA5E859F /* Pods_Proyecto_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5E97330D51FC7868ACB56CF /* Pods_Proyecto_iOS.framework */; };
 		A006F1982133D970005F7DF8 /* SobreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006F1972133D970005F7DF8 /* SobreViewController.swift */; };
 		A006F19A2133D98E005F7DF8 /* AsistenciaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006F1992133D98E005F7DF8 /* AsistenciaViewController.swift */; };
@@ -76,6 +77,7 @@
 		30C2717B2132E605007E58C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30C2717D2132E605007E58C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30C271842132ECA1007E58C5 /* logoGee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoGee.png; sourceTree = "<group>"; };
+		30D441EC215D1DDC0075182B /* ServerDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ServerDataManager.swift; path = "Proyecto iOS/DataManager/ServerDataManager.swift"; sourceTree = SOURCE_ROOT; };
 		6ADA0B62A6069D7DE46799DE /* Pods-Proyecto iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proyecto iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Proyecto iOS/Pods-Proyecto iOS.release.xcconfig"; sourceTree = "<group>"; };
 		8FA07A69201429330345C807 /* Pods-Proyecto iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proyecto iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Proyecto iOS/Pods-Proyecto iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A006F1972133D970005F7DF8 /* SobreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SobreViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 		30C2716D2132E5FB007E58C5 /* Proyecto iOS */ = {
 			isa = PBXGroup;
 			children = (
+				30D441EE215D37800075182B /* DataManager */,
 				2A721A4A2134E6F5001CC793 /* Ubicacion */,
 				A006F1942133D81E005F7DF8 /* SobreGEE */,
 				A006F1952133D82F005F7DF8 /* Asistencia */,
@@ -204,7 +207,6 @@
 				3034080521332D3200AF9CA7 /* iconos */,
 				30C271832132EC96007E58C5 /* img */,
 				A006F1962133D83F005F7DF8 /* SWRevealViewController */,
-				14B1DE6721333E42006F1BA6 /* CoreDataManager.swift */,
 				303407FA21332ACC00AF9CA7 /* CosmosDistrib.swift */,
 				30C2716E2132E5FB007E58C5 /* AppDelegate.swift */,
 				30C271702132E5FB007E58C5 /* ViewController.swift */,
@@ -229,6 +231,15 @@
 				14B1DE6921333EC4006F1BA6 /* messages.png */,
 			);
 			path = img;
+			sourceTree = "<group>";
+		};
+		30D441EE215D37800075182B /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				30D441EC215D1DDC0075182B /* ServerDataManager.swift */,
+				14B1DE6721333E42006F1BA6 /* CoreDataManager.swift */,
+			);
+			path = DataManager;
 			sourceTree = "<group>";
 		};
 		96CC3EDE992E2132D244E6BB /* Pods */ = {
@@ -391,6 +402,7 @@
 			files = (
 				3045F3682133275F00F3167F /* AbstractViewCell.swift in Sources */,
 				A006F19E2133D9CC005F7DF8 /* SWRevealViewController.m in Sources */,
+				30D441ED215D1DDC0075182B /* ServerDataManager.swift in Sources */,
 				14B1DE5D21333CEA006F1BA6 /* PonenteViewController.swift in Sources */,
 				30C271712132E5FB007E58C5 /* ViewController.swift in Sources */,
 				3045F3622133272000F3167F /* ActividadViewCell.swift in Sources */,

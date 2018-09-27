@@ -7,7 +7,6 @@ import CoreData
 import Alamofire
 
 class CoreDataManager: NSObject {
-
     static let instance = CoreDataManager()
     
     let urlForDB = Utils.applicationDocumentsDirectory().appendingPathComponent(Constants.DB_NAME + ".sqlite")
@@ -98,9 +97,7 @@ class CoreDataManager: NSObject {
         if (managedObjectContext?.hasChanges)! {
             do {
                 try managedObjectContext?.save()
-                print("GUARDO")
             } catch {
-                print("ERROR AL GUARDAR")
                 fatalError("No se pueden guardar los cambios a la BD \(error.localizedDescription)")
             }
         } else {
@@ -108,6 +105,8 @@ class CoreDataManager: NSObject {
         }
     }
 
+    // MARK: PONENTES
+    
     // Traer los datos de todos los ponentes de la BD
     func allPonentes() -> [Ponente] {
         var result:[Ponente] = []
@@ -124,8 +123,45 @@ class CoreDataManager: NSObject {
         return result
     }
     
+    // Agrega un registro de ponente al CoreData
+    func insertaPonente(datos: [String:String]) -> Ponente {
+        let ponente: Ponente = NSEntityDescription.insertNewObject(
+            forEntityName: Constants.ENTITY_PONENTE,
+            into: self.persistentContainer.viewContext) as! Ponente
+        
+        ponente.id = Int16(datos["id"] ?? "0")!
+        ponente.nombre = datos["nombre"] ?? ""
+        ponente.apellidos = datos["apellidos"] ?? ""
+        ponente.institucion = datos["institucion"] ?? ""
+        ponente.biodata = datos["biodata"] ?? ""
+
+        return ponente
+    }
+    
+    // Busca un ponente con id dado en CoreData
+    func buscaPonente(conId: Int16) -> Ponente? {
+        var datos: [Ponente]
+        
+        let fetch = NSFetchRequest<Ponente>(entityName:Constants.ENTITY_PONENTE)
+        fetch.predicate = NSPredicate(format:"id == %d", conId)
+        
+        do {
+            datos = try self.persistentContainer.viewContext.fetch(fetch)
+
+            if (datos.count > 0) {
+                return datos[0]
+            }
+        }
+        catch {
+            print("FALLO ALGO EN LA BD")
+            //No funciona el fetch, podrían ser problemas con la conexión a la BD
+        }
+
+        return nil
+    }
+    
     func existeRegistroPonente(conId:Int16) -> Bool {
-        var result:[Ponente] = []
+        var result: [Ponente] = []
         let fetch = NSFetchRequest<Ponente>(entityName:Constants.ENTITY_PONENTE)
         let filtro = NSPredicate(format:"id == %d", conId)
         fetch.predicate = filtro
@@ -140,46 +176,8 @@ class CoreDataManager: NSObject {
         
         return result.count > 0
     }
-    
-    //DATOS DE LOS PONENTES
-
-    func cargaDatosPonentes () {
-        if let urljson = URL(string:Constants.WS_PONENTES_URL) {
-            Alamofire.request(urljson).responseJSON { (response) in
-                // Prevenir el caso de que no haya conexión
-                guard response.result.isSuccess else {
-                    print("Error al tarer datos")
-                    return
-                }
-                
-                let tmp = response.result.value as! [String:Any]
-                if let jsonArray = tmp["ponentes"] as? [[String:Any]] {
-                    for persona:[String:Any] in jsonArray {
-                        var pId:Int16 = 0
-                        
-                        if let nsid: String = persona["id"] as? String {
-                            pId = Int16(nsid) ?? 0
-                        }
-
-                        if !self.existeRegistroPonente(conId: pId) {
-                            let ponente:Ponente = NSEntityDescription.insertNewObject(
-                                forEntityName: Constants.ENTITY_PONENTE,
-                                into: self.persistentContainer.viewContext) as! Ponente
-
-                            ponente.id = pId
-                            ponente.nombre = (persona["nombre"] as? String) ?? ""
-                            ponente.apellidos = (persona["apellidos"] as? String) ?? ""
-                            ponente.institucion = (persona["institucion"] as? String) ?? ""
-                            ponente.biodata = (persona["biodata"] as? String) ?? "Biodata DEFAULT de la Persona"
-                        }
-                    }
-                    
-                    self.saveContext()
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.NEW_DATA_MESSAGE), object: nil)
-                }
-            }
-        }
-    }
+        
+    // MARK: PROGRAMA
     
     func allTrabajos() -> [Trabajo] {
         var result: [Trabajo] = []
@@ -195,48 +193,24 @@ class CoreDataManager: NSObject {
         return result
     }
     
-    func cargaTrabajos() {
-        let headers: HTTPHeaders = [
-            "Gee-Timestamp": "2018.09.26 13:16"
-        ]
+    func insertaTrabajo(datos: [String:String]) {
+        let trabajoId = Int16(datos["id"] ?? "0")!
+
+        let trabajo: Trabajo = NSEntityDescription.insertNewObject(
+            forEntityName: "Trabajo",
+            into: self.persistentContainer.viewContext) as! Trabajo
         
-        if let urlJSON = URL(string: Constants.WS_TRABAJOS_URL) {
-            Alamofire.request(urlJSON, headers:headers).responseJSON { (response) in
-                guard response.result.isSuccess else {
-                    print("Error al tarer datos")
-                    return
-                }
-
-                let result = response.result.value as! [String:Any]
-                
-                if let trabajos = result["trabajos"] as? [[String:Any]] {
-                    for datosTrabajo: [String:Any] in trabajos {
-                        let trabajoId = Int16(datosTrabajo["id"] as! String)!
-                        
-                        if !self.existeTrabajo(conId: trabajoId) {
-                            let trabajo: Trabajo = NSEntityDescription.insertNewObject(
-                                forEntityName: "Trabajo",
-                                into: self.persistentContainer.viewContext) as! Trabajo
-                            
-                            trabajo.id = trabajoId
-                            trabajo.titulo = datosTrabajo["titulo"] as? String
-                            trabajo.modalidad = datosTrabajo["modalidad"] as? String
-                            trabajo.nombrePonente = datosTrabajo["nombrePonente"] as? String
-                            trabajo.lugar = datosTrabajo["lugar"] as? String
-                            
-                            let dateFormatter = DateFormatter()
-                            dateFormatter.dateFormat = "yyyy-MM-dd"
-                            trabajo.fecha = dateFormatter.date(from: datosTrabajo["fecha"] as! String)
-                            
-                            trabajo.hora = datosTrabajo["hora"] as? String
-                        }
-                    }
-
-                    self.saveContext()
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.NEW_DATA_MESSAGE), object: nil)
-                }
-            }
-        }
+        trabajo.id = trabajoId
+        trabajo.titulo = datos["titulo"]
+        trabajo.modalidad = datos["modalidad"]
+        trabajo.nombrePonente = datos["nombrePonente"]
+        trabajo.lugar = datos["lugar"]
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        trabajo.fecha = dateFormatter.date(from: datos["fecha"]!)
+        
+        trabajo.hora = datos["hora"]
     }
     
     func existeTrabajo(conId: Int16) -> Bool {

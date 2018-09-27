@@ -19,6 +19,8 @@ class PonenteViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        ServerDataManager.instance.cargaDetallesPonente(conId: ponente?.id ?? 0)
 
         lblNombre.text = ponente?.nombre
         lblDescripcion.text = ponente?.institucion
@@ -37,19 +39,11 @@ class PonenteViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        buildUX()
         // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    func buildUX() {
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
-

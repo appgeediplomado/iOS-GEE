@@ -54,7 +54,7 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
     
     @objc func actualizaDatosServer() {
         //Aqui comienza la recarga, y automáticamente presenta un objeto UIActivityIndicator
-        CoreDataManager.instance.cargaDatosPonentes() //CargaMasDatos del json al llamar a actualizaTabla
+        ServerDataManager.instance.cargaDatosPonentes() //CargaMasDatos del json al llamar a actualizaTabla
     }
 
     override func viewDidLoad() {
@@ -142,7 +142,7 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector:#selector(actualizaTabla), name:NSNotification.Name(rawValue: "kNuevosDatos"), object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(actualizaTabla), name:NSNotification.Name(rawValue: Constants.DATA_NUEVOS_PONENTES), object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -231,42 +231,6 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
     }
 
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
