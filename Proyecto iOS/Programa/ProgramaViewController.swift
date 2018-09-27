@@ -71,12 +71,20 @@ class ProgramaViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "celdaActividad", for: indexPath) as! ActividadViewCell
         let trabajo = actividades[indexPath.row]
         
+        cell.viewController = self
         cell.labelTitulo.text = trabajo.titulo
         cell.labelPonente.text = trabajo.nombrePonente
         cell.labelHora.text = trabajo.hora
         cell.labelLugar.text = trabajo.lugar
         cell.labelTipoPonencia.text = trabajo.modalidad
 
+        if let fecha = trabajo.fecha {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "EEEE d 'de' MMMM 'de' yyyy"
+            cell.lblFecha?.text = dateFormatter.string(from: fecha)
+
+        }
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
