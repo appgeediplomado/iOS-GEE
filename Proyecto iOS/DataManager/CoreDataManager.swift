@@ -134,6 +134,7 @@ class CoreDataManager: NSObject {
         ponente.apellidos = datos["apellidos"] ?? ""
         ponente.institucion = datos["institucion"] ?? ""
         ponente.biodata = datos["biodata"] ?? ""
+        ponente.datosCompletos = false
 
         return ponente
     }

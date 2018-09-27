@@ -73,6 +73,7 @@ class ServerDataManager: NSObject {
                     ponente.apellidos = datosPonente["apellidos"]
                     ponente.institucion = datosPonente["institucion"]
                     ponente.biodata = datosPonente["biodata"]
+                    ponente.datosCompletos = true
                 } else {
                     _ = self.coreDataManager.insertaPonente(datos: datosPonente)
                 }
