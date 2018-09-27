@@ -21,6 +21,7 @@
 		303407FF21332C6800AF9CA7 /* ios-calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 303407FE21332C6800AF9CA7 /* ios-calendar.png */; };
 		3034080121332C7C00AF9CA7 /* ios-ubicacion.png in Resources */ = {isa = PBXBuildFile; fileRef = 3034080021332C7C00AF9CA7 /* ios-ubicacion.png */; };
 		3034080321332C8400AF9CA7 /* ios-reloj.png in Resources */ = {isa = PBXBuildFile; fileRef = 3034080221332C8300AF9CA7 /* ios-reloj.png */; };
+		30406366215C722300FC421B /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30406365215C722300FC421B /* EventKit.framework */; };
 		3045F360213326F100F3167F /* ProgramaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3045F35F213326F100F3167F /* ProgramaViewController.swift */; };
 		3045F3622133272000F3167F /* ActividadViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3045F3612133272000F3167F /* ActividadViewCell.swift */; };
 		3045F3642133273D00F3167F /* ActividadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3045F3632133273D00F3167F /* ActividadViewController.swift */; };
@@ -36,10 +37,10 @@
 		30C271792132E605007E58C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30C271782132E605007E58C5 /* Assets.xcassets */; };
 		30C2717C2132E605007E58C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30C2717A2132E605007E58C5 /* LaunchScreen.storyboard */; };
 		30C271852132ECA1007E58C5 /* logoGee.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C271842132ECA1007E58C5 /* logoGee.png */; };
+		75E8EC9832F24117DA5E859F /* Pods_Proyecto_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5E97330D51FC7868ACB56CF /* Pods_Proyecto_iOS.framework */; };
 		A006F1982133D970005F7DF8 /* SobreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006F1972133D970005F7DF8 /* SobreViewController.swift */; };
 		A006F19A2133D98E005F7DF8 /* AsistenciaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006F1992133D98E005F7DF8 /* AsistenciaViewController.swift */; };
 		A006F19E2133D9CC005F7DF8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A006F19C2133D9CC005F7DF8 /* SWRevealViewController.m */; };
-		A091DB2A21344D55000EB562 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A091DB2921344D55000EB562 /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,7 +58,7 @@
 		303407FE21332C6800AF9CA7 /* ios-calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios-calendar.png"; sourceTree = "<group>"; };
 		3034080021332C7C00AF9CA7 /* ios-ubicacion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios-ubicacion.png"; sourceTree = "<group>"; };
 		3034080221332C8300AF9CA7 /* ios-reloj.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios-reloj.png"; sourceTree = "<group>"; };
-		3045F35521331D5D00F3167F /* Cosmos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cosmos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30406365215C722300FC421B /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		3045F35F213326F100F3167F /* ProgramaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramaViewController.swift; sourceTree = "<group>"; };
 		3045F3612133272000F3167F /* ActividadViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActividadViewCell.swift; sourceTree = "<group>"; };
 		3045F3632133273D00F3167F /* ActividadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActividadViewController.swift; sourceTree = "<group>"; };
@@ -75,7 +76,6 @@
 		30C2717B2132E605007E58C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30C2717D2132E605007E58C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30C271842132ECA1007E58C5 /* logoGee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoGee.png; sourceTree = "<group>"; };
-		5C0B6AAE036EAFC0F40AE7AF /* Pods_Proyecto_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Proyecto_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ADA0B62A6069D7DE46799DE /* Pods-Proyecto iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proyecto iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Proyecto iOS/Pods-Proyecto iOS.release.xcconfig"; sourceTree = "<group>"; };
 		8FA07A69201429330345C807 /* Pods-Proyecto iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proyecto iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Proyecto iOS/Pods-Proyecto iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A006F1972133D970005F7DF8 /* SobreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SobreViewController.swift; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 		A006F19B2133D9CB005F7DF8 /* Proyecto iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Proyecto iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		A006F19C2133D9CC005F7DF8 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		A006F19D2133D9CC005F7DF8 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		A091DB2921344D55000EB562 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5E97330D51FC7868ACB56CF /* Pods_Proyecto_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Proyecto_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +91,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A091DB2A21344D55000EB562 /* Alamofire.framework in Frameworks */,
+				30406366215C722300FC421B /* EventKit.framework in Frameworks */,
+				75E8EC9832F24117DA5E859F /* Pods_Proyecto_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,9 +119,8 @@
 		18F62FDD154CFC198EE73DCB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A091DB2921344D55000EB562 /* Alamofire.framework */,
-				3045F35521331D5D00F3167F /* Cosmos.framework */,
-				5C0B6AAE036EAFC0F40AE7AF /* Pods_Proyecto_iOS.framework */,
+				30406365215C722300FC421B /* EventKit.framework */,
+				F5E97330D51FC7868ACB56CF /* Pods_Proyecto_iOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

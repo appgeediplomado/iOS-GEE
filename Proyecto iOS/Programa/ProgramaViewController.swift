@@ -24,7 +24,7 @@ class ProgramaViewController: UITableViewController {
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     var currentIndexPath: IndexPath?
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -83,6 +83,19 @@ class ProgramaViewController: UITableViewController {
         cell.labelHora.text = trabajo.hora
         cell.labelLugar.text = trabajo.lugar
         cell.labelTipoPonencia.text = trabajo.modalidad
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        if let fecha = trabajo.fecha {
+            let fechaStr = dateFormatter.string(from: fecha)
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            
+            if let hora = trabajo.hora {
+                cell.fechaActividad = dateFormatter.date(from: fechaStr + " " + hora)
+            }
+            
+        }
 
         return cell
     }

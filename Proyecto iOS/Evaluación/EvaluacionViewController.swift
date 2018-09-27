@@ -29,7 +29,11 @@ class EvaluacionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func botonCalificarTouch(_ sender: Any) {
+        let calidadPonencia = starsCalidadPonencia.rating
+        print(calidadPonencia)
+    }
+    
     /*
     // MARK: - Navigation
 

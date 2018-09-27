@@ -101,13 +101,8 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
         definirSeccionesTabla()
         
         if ponentes.count <= 0 {
-            print("Va a traer mas datos")
             self.actualizaDatosServer()
         }
-    }
-    
-    @objc func addTapped() {
-        print("Se presiono el boton")
     }
     
     /**
@@ -201,7 +196,7 @@ class PonentesTableViewController: UITableViewController, UISearchResultsUpdatin
             infoPonente = ponentes[indexPath.row]
         }
         
-        cell.textLabel?.text = infoPonente.nombre! + " " + infoPonente.apellidos!
+        cell.textLabel?.text = (infoPonente.nombre ?? "") + " " + (infoPonente.apellidos ?? "")
 
         let image = UIImage(named: "icons8-name_filled")
         cell.imageView?.image = image

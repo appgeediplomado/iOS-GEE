@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EventKit
 
 class ActividadViewCell: UITableViewCell {
     @IBOutlet weak var labelTitulo: UILabel!
@@ -14,6 +15,38 @@ class ActividadViewCell: UITableViewCell {
     @IBOutlet weak var labelHora: UILabel!
     @IBOutlet weak var labelLugar: UILabel!
     @IBOutlet weak var labelTipoPonencia: UILabel!
+    
+    var fechaActividad: Date?
+    
+    @IBAction func botonAgendarTouch(_ sender: Any) {
+        let titulo = self.labelTitulo.text
+        let lugar = self.labelLugar.text
+        
+        let eventStore: EKEventStore = EKEventStore()
+        eventStore.requestAccess(to: .event) { (granted, error) in
+            if granted && (error == nil) {
+                let event: EKEvent = EKEvent(eventStore: eventStore)
+                
+                event.title = titulo
+                event.location = lugar
+                
+                if let fecha = self.fechaActividad {
+                    event.startDate = fecha
+                    event.endDate = fecha
+                }
+                
+                event.calendar = eventStore.defaultCalendarForNewEvents
+                
+                do {
+                   try eventStore.save(event, span: .thisEvent)
+                } catch {
+                   print("failed to save event with error : \(error) or access not granted")
+                }
+            } else {
+                print("Event failed")
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

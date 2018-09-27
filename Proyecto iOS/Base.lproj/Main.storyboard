@@ -104,6 +104,9 @@
                                                 <constraint firstAttribute="height" constant="25" id="fi3-iM-bam"/>
                                             </constraints>
                                             <state key="normal" title="Button" image="ios-calendar.png"/>
+                                            <connections>
+                                                <action selector="botonAgendarTouch:" destination="YMw-a0-5bU" eventType="touchUpInside" id="zrd-2o-4g1"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3O-la-Cbk">
                                             <rect key="frame" x="318" y="118.33333333333331" width="25" height="25"/>
@@ -387,6 +390,9 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="botonCalificarTouch:" destination="cju-lv-pcv" eventType="touchUpInside" id="3SO-as-aKO"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1884,7 +1890,7 @@ Ing. José Luis Vázquez Torres</string>
     <inferredMetricsTieBreakers>
         <segue reference="CZQ-NL-kgC"/>
         <segue reference="gdz-hU-jm8"/>
-        <segue reference="3TL-WN-Vwp"/>
+        <segue reference="Hfk-0Y-aSs"/>
         <segue reference="cNb-GC-1rW"/>
     </inferredMetricsTieBreakers>
 </document>
