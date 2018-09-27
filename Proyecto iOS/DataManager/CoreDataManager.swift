@@ -123,7 +123,7 @@ class CoreDataManager: NSObject {
         return result
     }
     
-    // Agrega un registro de ponente al CoreData
+    // Agrega un registro de ponente
     func insertaPonente(datos: [String:String]) -> Ponente {
         let ponente: Ponente = NSEntityDescription.insertNewObject(
             forEntityName: Constants.ENTITY_PONENTE,
@@ -139,7 +139,7 @@ class CoreDataManager: NSObject {
         return ponente
     }
     
-    // Busca un ponente con id dado en CoreData
+    // Busca un ponente con id dado
     func buscaPonente(conId: Int16) -> Ponente? {
         var datos: [Ponente]
         
@@ -180,6 +180,7 @@ class CoreDataManager: NSObject {
         
     // MARK: PROGRAMA
     
+    // Traer los datos de todos los trabajos
     func allTrabajos() -> [Trabajo] {
         var result: [Trabajo] = []
         let fetch = NSFetchRequest<Trabajo>(entityName: Constants.ENTITY_TRABAJO)
@@ -194,6 +195,7 @@ class CoreDataManager: NSObject {
         return result
     }
     
+    // Agregar un registro de trabajo
     func insertaTrabajo(datos: [String:String]) {
         let trabajoId = Int16(datos["id"] ?? "0")!
 
@@ -212,6 +214,28 @@ class CoreDataManager: NSObject {
         trabajo.fecha = dateFormatter.date(from: datos["fecha"]!)
         
         trabajo.hora = datos["hora"]
+    }
+    
+    // Busca un trabajo con id dado
+    func buscaTrabajo(conId: Int16) -> Trabajo? {
+        var datos: [Trabajo]
+        
+        let fetch = NSFetchRequest<Trabajo>(entityName:Constants.ENTITY_TRABAJO)
+        fetch.predicate = NSPredicate(format:"id == %d", conId)
+        
+        do {
+            datos = try self.persistentContainer.viewContext.fetch(fetch)
+            
+            if (datos.count > 0) {
+                return datos[0]
+            }
+        }
+        catch {
+            print("FALLO ALGO EN LA BD")
+            //No funciona el fetch, podrían ser problemas con la conexión a la BD
+        }
+        
+        return nil
     }
     
     func existeTrabajo(conId: Int16) -> Bool {

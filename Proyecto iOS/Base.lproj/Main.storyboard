@@ -242,7 +242,7 @@
                                     <outlet property="labelNombre" destination="e0n-vi-jni" id="TSC-t2-Vpg"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="celdaAbstract" id="b23-xJ-tq9" customClass="AbstractViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="celdaAbstract" id="b23-xJ-tq9" customClass="AbstractViewCell" customModule="Proyecto_iOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="118" width="414" height="160"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="b23-xJ-tq9" id="5ss-91-JoF">
@@ -264,6 +264,9 @@
                                         <constraint firstItem="arh-OP-N7r" firstAttribute="bottom" secondItem="5ss-91-JoF" secondAttribute="bottomMargin" id="ye5-k6-flI"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="tvAbstract" destination="arh-OP-N7r" id="aXW-ln-73O"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1899,7 +1902,7 @@ Ing. José Luis Vázquez Torres</string>
     <inferredMetricsTieBreakers>
         <segue reference="CZQ-NL-kgC"/>
         <segue reference="gdz-hU-jm8"/>
-        <segue reference="Hfk-0Y-aSs"/>
+        <segue reference="3TL-WN-Vwp"/>
         <segue reference="cNb-GC-1rW"/>
     </inferredMetricsTieBreakers>
 </document>

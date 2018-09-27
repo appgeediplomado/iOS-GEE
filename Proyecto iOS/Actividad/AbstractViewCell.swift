@@ -9,6 +9,8 @@
 import UIKit
 
 class AbstractViewCell: UITableViewCell {
+    @IBOutlet weak var tvAbstract: UITextView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

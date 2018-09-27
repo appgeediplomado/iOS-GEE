@@ -20,6 +20,24 @@ class ActividadViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if !(trabajo?.datosCompletos ?? false) {
+            ServerDataManager.instance.cargaDetallesTrabajo(conId: trabajo?.id ?? 0)
+        }
+
+        // Agregar observador para detectar cando estén listos los nuevos datos
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(nuevosDatos),
+            name: NSNotification.Name(rawValue: Constants.DATA_DETALLES_TRABAJO), object: nil)
+    }
+    
+    @objc func nuevosDatos() {
+        if let trabajoId = trabajo?.id {
+            let t = CoreDataManager.instance.buscaTrabajo(conId: trabajoId)
+            tableView.reloadData()
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -102,6 +120,8 @@ class ActividadViewController: UITableViewController {
             celdaPonente.labelNombre.text = trabajo?.nombrePonente
         } else { // Abstract
             cell = tableView.dequeueReusableCell(withIdentifier: "celdaAbstract", for: indexPath)
+            let celdaAbstract = cell as! AbstractViewCell
+            celdaAbstract.tvAbstract.text = trabajo?.sinopsis
         }
 
         return cell
