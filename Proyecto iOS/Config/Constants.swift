@@ -29,6 +29,7 @@ class Constants: NSObject {
     static let WS_DETALLES_TRABAJO_URL = Constants.WS_BASE + "/trabajos/"
     static let WS_SESION_URL = Constants.WS_BASE + "/asistentes/sesion/"
     static let WS_BITACORA_ASISTENCIA_URL = Constants.WS_BASE + "/asistentes/"
+    static let WS_DETALLES_ASISTENTE_URL = Constants.WS_BASE + "/asistentes/%d"
     static let WS_RETROALIMENTACION_URL = Constants.WS_BASE + "/asistentes/%d/retroalimentacion/%d"
 
     // Ruta para obtener imagen de QR

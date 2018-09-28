@@ -43,7 +43,7 @@ class AsistenciaViewController: UIViewController {
     
     func codeQR(asistenteID: Int){
         let urlCodeQR = Constants.WS_APIQRSERVER
-        if let url = URL(string: urlCodeQR + String(asistenteID)){
+        if let url = URL(string: urlCodeQR + String(format: Constants.WS_DETALLES_ASISTENTE_URL, asistenteID)){
             do{
                 let bytes = try Data(contentsOf: url)
                 ivCodeQR.image = UIImage(data: bytes)
