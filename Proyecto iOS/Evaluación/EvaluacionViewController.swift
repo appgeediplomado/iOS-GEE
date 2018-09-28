@@ -28,11 +28,20 @@ class EvaluacionViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         labelTitulo.text = trabajo?.titulo
+        
+        if let retroalimentacion = CoreDataManager.instance.buscaRetroalimentacion(trabajoId: trabajo?.id ?? 0) {
+            starsCalidadPonencia.rating = Double(retroalimentacion.ponencia)
+            starsExperienciaPonente.rating = Double(retroalimentacion.ponente)
+            starsRelevanciaPonencia.rating = Double(retroalimentacion.relevancia)
+        } else {
+            NotificationCenter.default.addObserver(
+                self, selector: #selector(retroalimentacionAsignada),
+                name: NSNotification.Name(rawValue: Constants.DATA_RETROALIMENTACION), object: nil)
+        }
     }
     
     @IBAction func botonCalificarTouch(_ sender: Any) {
         if (!UserDefaults.standard.sesionIniciada()) {
-//            Alert.error(controller: self, mensaje: "Para calificar una actividad debe iniciar sesión")
             error(texto: "Para calificar una actividad debes iniciar sesión")
             return
         }
@@ -42,11 +51,26 @@ class EvaluacionViewController: UIViewController {
             return
         }
         
-        let asistenteId = UserDefaults.standard.getUsuarioID();
+        if (CoreDataManager.instance.existeRetroalimentacion(trabajoId: trabajo?.id ?? 0)) {
+            error(texto: "Usted ya ha dado retroalimentacón a esta ponencia")
+            return
+        }
         
+        let asistenteId = Int16(UserDefaults.standard.getUsuarioID());
+        if let trabajoId = trabajo?.id {
+            let evaluacion = Evaluacion(
+                ponencia: Int16(starsCalidadPonencia.rating),
+                ponente: Int16(starsExperienciaPonente.rating),
+                relevancia: Int16(starsRelevanciaPonencia.rating))
+            
+            ServerDataManager.instance.evaluarTrabajo(asistenteId: asistenteId, trabajoId: trabajoId, evaluacion: evaluacion)
+        }
+       
         
-        let calidadPonencia = starsCalidadPonencia.rating
-        print(calidadPonencia)
+    }
+    
+    @objc func retroalimentacionAsignada() {
+        aviso(texto: "¡Muchas gracias por su retroalimentación!")
     }
     
     /*

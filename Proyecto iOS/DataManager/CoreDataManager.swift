@@ -200,7 +200,7 @@ class CoreDataManager: NSObject {
         let trabajoId = Int16(datos["id"] ?? "0")!
 
         let trabajo: Trabajo = NSEntityDescription.insertNewObject(
-            forEntityName: "Trabajo",
+            forEntityName: Constants.ENTITY_TRABAJO,
             into: self.persistentContainer.viewContext) as! Trabajo
         
         trabajo.id = trabajoId
@@ -251,5 +251,54 @@ class CoreDataManager: NSObject {
         }
         
         return result.count > 0
+    }
+    
+    // MARK: RETROALIMENTACION
+    
+    func existeRetroalimentacion(trabajoId: Int16) -> Bool {
+        var result: [Retroalimentacion] = []
+        
+        let fetch = NSFetchRequest<Retroalimentacion>(entityName: Constants.ENTITY_RETROALIMENTACION)
+        fetch.predicate = NSPredicate(format: "trabajoId == %d", trabajoId)
+        
+        do {
+            result = try persistentContainer.viewContext.fetch(fetch)
+        } catch {
+            print("Error al acceder a la BD")
+        }
+        
+        return result.count > 0
+    }
+    
+    func buscaRetroalimentacion(trabajoId: Int16) -> Retroalimentacion? {
+        var datos: [Retroalimentacion]
+        
+        let fetch = NSFetchRequest<Retroalimentacion>(entityName:Constants.ENTITY_RETROALIMENTACION)
+        fetch.predicate = NSPredicate(format:"trabajoId == %d", trabajoId)
+
+        do {
+            datos = try self.persistentContainer.viewContext.fetch(fetch)
+            
+            if (datos.count > 0) {
+                return datos[0]
+            }
+        }
+        catch {
+            print("FALLO ALGO EN LA BD")
+            //No funciona el fetch, podrían ser problemas con la conexión a la BD
+        }
+        
+        return nil
+    }
+    
+    func insertaRetroalimentacion(trabajoId: Int16, evaluacion: Evaluacion) {
+        let retroalimentacion: Retroalimentacion = NSEntityDescription.insertNewObject(
+            forEntityName: Constants.ENTITY_RETROALIMENTACION,
+            into: self.persistentContainer.viewContext) as! Retroalimentacion
+        
+        retroalimentacion.trabajoId = trabajoId
+        retroalimentacion.ponencia = evaluacion.ponencia
+        retroalimentacion.ponente = evaluacion.ponente
+        retroalimentacion.relevancia = evaluacion.relevancia
     }
 }
