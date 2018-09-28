@@ -1080,14 +1080,14 @@
                                 <rect key="frame" x="162" y="247" width="90" height="30"/>
                                 <state key="normal" title="Iniciar sesión"/>
                                 <connections>
-                                    <segue destination="Xs1-qI-JBg" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="vVj-Jy-MRP"/>
+                                    <action selector="btnIniciarSesionTouch:" destination="3GF-7J-WdE" eventType="touchUpInside" id="iIL-Ud-Tl9"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DJC-Gz-cYS">
                                 <rect key="frame" x="72" y="102" width="288" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="username"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1118,6 +1118,9 @@
                     <connections>
                         <outlet property="alertButton" destination="T2A-UC-xqd" id="4hy-KR-sbX"/>
                         <outlet property="menuButton" destination="aVS-hb-eLl" id="5lU-rU-sVp"/>
+                        <outlet property="txtContrasenia" destination="37r-hc-MCG" id="Dqj-0O-9ui"/>
+                        <outlet property="txtUsuario" destination="DJC-Gz-cYS" id="aa3-ha-7MD"/>
+                        <segue destination="Xs1-qI-JBg" kind="custom" identifier="mostrarPrograma" customClass="SWRevealViewControllerSeguePushController" id="Nhn-Xv-cgh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vyE-nY-k65" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1455,6 +1458,7 @@ Ing. José Luis Vázquez Torres</string>
                     </navigationItem>
                     <connections>
                         <outlet property="menuButton" destination="2tA-5c-Xtp" id="mDe-Nb-IXe"/>
+                        <segue destination="LEY-tO-H0p" kind="custom" identifier="mostrarInicioSesion" customClass="SWRevealViewControllerSeguePushController" id="0wc-E0-a62"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d0d-y4-91v" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1901,8 +1905,8 @@ Ing. José Luis Vázquez Torres</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CZQ-NL-kgC"/>
-        <segue reference="gdz-hU-jm8"/>
-        <segue reference="3TL-WN-Vwp"/>
-        <segue reference="cNb-GC-1rW"/>
+        <segue reference="0wc-E0-a62"/>
+        <segue reference="Hfk-0Y-aSs"/>
+        <segue reference="Nhn-Xv-cgh"/>
     </inferredMetricsTieBreakers>
 </document>

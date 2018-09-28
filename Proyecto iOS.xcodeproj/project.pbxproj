@@ -16,6 +16,8 @@
 		14B1DE6E21333EC4006F1BA6 /* linux-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 14B1DE6A21333EC4006F1BA6 /* linux-logo.png */; };
 		14B1DE7021333EC4006F1BA6 /* menuicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 14B1DE6C21333EC4006F1BA6 /* menuicon.png */; };
 		2A721A4E2134E7C5001CC793 /* UbicacionTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A721A4D2134E7C5001CC793 /* UbicacionTableTableViewController.swift */; };
+		2AD90A56215D51180032CD92 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD90A55215D51180032CD92 /* UserDefaults.swift */; };
+		2AD90A58215D68220032CD92 /* AsistenteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD90A57215D68220032CD92 /* AsistenteData.swift */; };
 		303407FB21332ACC00AF9CA7 /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303407FA21332ACC00AF9CA7 /* CosmosDistrib.swift */; };
 		303407FD21332C1500AF9CA7 /* ios-evaluar.png in Resources */ = {isa = PBXBuildFile; fileRef = 303407FC21332C1500AF9CA7 /* ios-evaluar.png */; };
 		303407FF21332C6800AF9CA7 /* ios-calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 303407FE21332C6800AF9CA7 /* ios-calendar.png */; };
@@ -54,6 +56,8 @@
 		14B1DE6A21333EC4006F1BA6 /* linux-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linux-logo.png"; sourceTree = "<group>"; };
 		14B1DE6C21333EC4006F1BA6 /* menuicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuicon.png; sourceTree = "<group>"; };
 		2A721A4D2134E7C5001CC793 /* UbicacionTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbicacionTableTableViewController.swift; sourceTree = "<group>"; };
+		2AD90A55215D51180032CD92 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		2AD90A57215D68220032CD92 /* AsistenteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsistenteData.swift; sourceTree = "<group>"; };
 		303407FA21332ACC00AF9CA7 /* CosmosDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
 		303407FC21332C1500AF9CA7 /* ios-evaluar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios-evaluar.png"; sourceTree = "<group>"; };
 		303407FE21332C6800AF9CA7 /* ios-calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios-calendar.png"; sourceTree = "<group>"; };
@@ -238,6 +242,8 @@
 			children = (
 				30D441EC215D1DDC0075182B /* ServerDataManager.swift */,
 				14B1DE6721333E42006F1BA6 /* CoreDataManager.swift */,
+				2AD90A55215D51180032CD92 /* UserDefaults.swift */,
+				2AD90A57215D68220032CD92 /* AsistenteData.swift */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -405,12 +411,14 @@
 				30D441ED215D1DDC0075182B /* ServerDataManager.swift in Sources */,
 				14B1DE5D21333CEA006F1BA6 /* PonenteViewController.swift in Sources */,
 				30C271712132E5FB007E58C5 /* ViewController.swift in Sources */,
+				2AD90A56215D51180032CD92 /* UserDefaults.swift in Sources */,
 				3045F3622133272000F3167F /* ActividadViewCell.swift in Sources */,
 				303407FB21332ACC00AF9CA7 /* CosmosDistrib.swift in Sources */,
 				14B1DE6621333E18006F1BA6 /* Utils.swift in Sources */,
 				30C2716F2132E5FB007E58C5 /* AppDelegate.swift in Sources */,
 				30C271772132E5FB007E58C5 /* Proyecto_iOS.xcdatamodeld in Sources */,
 				14B1DE6121333D5A006F1BA6 /* Constants.swift in Sources */,
+				2AD90A58215D68220032CD92 /* AsistenteData.swift in Sources */,
 				3045F3642133273D00F3167F /* ActividadViewController.swift in Sources */,
 				3045F360213326F100F3167F /* ProgramaViewController.swift in Sources */,
 				14B1DE5E21333CEA006F1BA6 /* PonentesTableViewController.swift in Sources */,

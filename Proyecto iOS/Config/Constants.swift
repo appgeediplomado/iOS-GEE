@@ -13,6 +13,7 @@ class Constants: NSObject {
     static let DATA_NUEVOS_TRABAJOS = "kNuevosTrabajos"
     static let DATA_DETALLES_PONENTE = "kDetallesPonente"
     static let DATA_DETALLES_TRABAJO = "kDetallesTrabajo"
+    static let DATA_SESION_ASISTENTE = "kSesionAsistente"
     
     // Ponentes
     static let PONENTE_CELL_HEIGHT:CGFloat = 80.0
@@ -25,6 +26,10 @@ class Constants: NSObject {
     static let WS_DETALLES_TRABAJO_URL = "http://roman.cele.unam.mx/wsgee/trabajos/"
     
     // Nombre de entidades de CoreData
+
+  //Asistente
+    static let WS_SESION_URL = "http://roman.cele.unam.mx/wsgee/asistentes/sesion/"
+    
     static let ENTITY_PONENTE = "Ponente"
     static let ENTITY_TRABAJO = "Trabajo"
 }

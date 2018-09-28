@@ -13,19 +13,30 @@ class AsistenciaViewController: UIViewController {
     @IBOutlet weak var menuButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-        menuButton.target = revealViewController()
-        menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
-        revealViewController().rightViewRevealWidth = 200
         
-        view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        if !AsistenteData.instance.existeSesionAsistente() {
+            self.performSegue(withIdentifier: "mostrarInicioSesion", sender: nil )
+        }
+        sideMenuLeft()
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    func sideMenuLeft(){
+        if revealViewController() != nil {
+            menuButton.target = revealViewController()
+            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            revealViewController().rearViewRevealWidth = 300
+            
+            view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+    }
+    
     
 
     /*
