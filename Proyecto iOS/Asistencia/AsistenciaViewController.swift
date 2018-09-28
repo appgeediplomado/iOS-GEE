@@ -10,7 +10,10 @@ import UIKit
 
 class AsistenciaViewController: UIViewController {
 
+    @IBOutlet weak var lbNombreAsistente: UILabel!
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    @IBOutlet weak var ivCodeQR: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,7 +21,8 @@ class AsistenciaViewController: UIViewController {
             self.performSegue(withIdentifier: "mostrarInicioSesion", sender: nil )
         }
         sideMenuLeft()
-
+        lbNombreAsistente.text = AsistenteData.instance.getAsistenteNombre()
+        codeQR(asistenteID: AsistenteData.instance.getAsistenteID())
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +41,18 @@ class AsistenciaViewController: UIViewController {
         }
     }
     
-    
+    func codeQR(asistenteID: Int){
+        let urlCodeQR = Constants.WS_APIQRSERVER
+        if let url = URL(string: urlCodeQR + String(asistenteID)){
+            do{
+                let bytes = try Data(contentsOf: url)
+                ivCodeQR.image = UIImage(data: bytes)
+            }
+            catch{
+                print("Error al cargar imagen QR")
+            }
+        }
+    }
 
     /*
     // MARK: - Navigation
