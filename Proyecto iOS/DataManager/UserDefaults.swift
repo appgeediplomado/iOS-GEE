@@ -10,6 +10,7 @@ extension UserDefaults{
     enum UserDefaultsKeys : String {
         case sesionIniciada
         case usuarioID
+        case usuarioNombre
     }
     //MARK: Registrar sesión
     func setSesion(value: Bool)
@@ -31,6 +32,17 @@ extension UserDefaults{
     func getUsuarioID() -> Int{
         return integer(forKey: UserDefaultsKeys.usuarioID.rawValue)
     }
+    
+    func setUsuarioNombre(value: String){
+        set(value, forKey: UserDefaultsKeys.usuarioNombre.rawValue)
+        synchronize()
+    }
+    
+    func getUsuarioNombre() -> String?{
+        return string(forKey: UserDefaultsKeys.usuarioNombre.rawValue)
+    }
+    
+    
 }
 
 

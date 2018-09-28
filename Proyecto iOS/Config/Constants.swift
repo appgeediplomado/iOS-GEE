@@ -14,6 +14,7 @@ class Constants: NSObject {
     static let DATA_DETALLES_PONENTE = "kDetallesPonente"
     static let DATA_DETALLES_TRABAJO = "kDetallesTrabajo"
     static let DATA_SESION_ASISTENTE = "kSesionAsistente"
+    static let DATA_ASISTENTE_BITACORA = "kAsistenteBitacora"
     
     // Ponentes
     static let PONENTE_CELL_HEIGHT:CGFloat = 80.0
@@ -27,7 +28,11 @@ class Constants: NSObject {
     static let WS_DETALLES_TRABAJO_URL = Constants.WS_BASE + "/trabajos/"
     static let WS_SESION_URL = Constants.WS_BASE + "/asistentes/sesion/"
     static let WS_RETROALIMENTACION_URL = Constants.WS_BASE + "/asistentes/"
+    static let WS_BITACORA_ASISTENCIA_URL = Constants.WS_BASE + "/asistentes/"
 
+    // Ruta para obtener imagen de QR
+    static let WS_APIQRSERVER = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&color=004168&data="
+    
     // Nombre de entidades de CoreData
     static let ENTITY_PONENTE = "Ponente"
     static let ENTITY_TRABAJO = "Trabajo"
