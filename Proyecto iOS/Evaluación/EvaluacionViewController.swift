@@ -31,6 +31,20 @@ class EvaluacionViewController: UIViewController {
     }
     
     @IBAction func botonCalificarTouch(_ sender: Any) {
+        if (!UserDefaults.standard.sesionIniciada()) {
+//            Alert.error(controller: self, mensaje: "Para calificar una actividad debe iniciar sesión")
+            error(texto: "Para calificar una actividad debes iniciar sesión")
+            return
+        }
+        
+        if (starsCalidadPonencia.rating == 0.0 || starsExperienciaPonente.rating == 0.0 || starsRelevanciaPonencia.rating == 0.0) {
+            error(texto: "Debes calificar todos los rubros")
+            return
+        }
+        
+        let asistenteId = UserDefaults.standard.getUsuarioID();
+        
+        
         let calidadPonencia = starsCalidadPonencia.rating
         print(calidadPonencia)
     }
