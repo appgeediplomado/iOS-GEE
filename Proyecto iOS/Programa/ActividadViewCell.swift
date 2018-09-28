@@ -12,10 +12,12 @@ import EventKit
 class ActividadViewCell: UITableViewCell {
     @IBOutlet weak var labelTitulo: UILabel!
     @IBOutlet weak var labelPonente: UILabel!
+    @IBOutlet weak var lblFecha: UILabel!
     @IBOutlet weak var labelHora: UILabel!
     @IBOutlet weak var labelLugar: UILabel!
     @IBOutlet weak var labelTipoPonencia: UILabel!
     
+    var viewController: UIViewController?
     var fechaActividad: Date?
     
     @IBAction func botonAgendarTouch(_ sender: Any) {
@@ -38,7 +40,15 @@ class ActividadViewCell: UITableViewCell {
                 event.calendar = eventStore.defaultCalendarForNewEvents
                 
                 do {
-                   try eventStore.save(event, span: .thisEvent)
+                    try eventStore.save(event, span: .thisEvent)
+                    
+                    if let controller = self.viewController {
+                        let alert = UIAlertController(title: "Calendario", message: "Se agregó el evento al calendario", preferredStyle: .alert)
+                        let actAceptar = UIAlertAction(title: "Aceptar", style: .default, handler: nil)
+                        
+                        alert.addAction(actAceptar)
+                        controller.present(alert, animated: true)
+                    }
                 } catch {
                    print("failed to save event with error : \(error) or access not granted")
                 }

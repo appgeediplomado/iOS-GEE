@@ -56,7 +56,7 @@ class ServerDataManager: NSObject {
      * actualiza los datos. En caso contrario, inserta un nuevo registro local.
      */
     func cargaDetallesPonente(conId: Int16) {
-        let urlJSON = Constants.WS_DETALLES_PONENTES_URL + String(conId);
+        let urlJSON = Constants.WS_DETALLES_PONENTE_URL + String(conId);
         
         Alamofire.request(urlJSON).responseJSON { (response) in
             guard response.result.isSuccess else {
@@ -73,6 +73,7 @@ class ServerDataManager: NSObject {
                     ponente.apellidos = datosPonente["apellidos"]
                     ponente.institucion = datosPonente["institucion"]
                     ponente.biodata = datosPonente["biodata"]
+                    ponente.datosCompletos = true
                 } else {
                     _ = self.coreDataManager.insertaPonente(datos: datosPonente)
                 }
@@ -105,6 +106,38 @@ class ServerDataManager: NSObject {
                 
                 self.coreDataManager.saveContext()
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.DATA_NUEVOS_TRABAJOS), object: nil)
+            }
+        }
+    }
+    
+    /**
+     * Carga detalles de un trabajo desde el servidor. Si el trabajo ya existe localmente,
+     * actualiza los datos. En caso contrario, inserta un nuevo registro local.
+     */
+    func cargaDetallesTrabajo(conId: Int16) {
+        let urlJSON = Constants.WS_DETALLES_TRABAJO_URL + String(conId);
+        
+        Alamofire.request(urlJSON).responseJSON { (response) in
+            guard response.result.isSuccess else {
+                print("Error al traer datos")
+                return
+            }
+            
+            let result = response.result.value as! [String:Any]
+            
+            if let datos = result["datos"] as? [String:String] {
+                if let trabajo = self.coreDataManager.buscaTrabajo(conId: conId) {
+                    trabajo.titulo = datos["titulo"]
+                    trabajo.modalidad = datos["modalidad"]
+                    trabajo.nombrePonente = datos["ponente"]
+                    trabajo.sinopsis = datos["sinopsis"]
+                    trabajo.datosCompletos = true
+                } else {
+                    _ = self.coreDataManager.insertaTrabajo(datos: datos)
+                }
+                
+                self.coreDataManager.saveContext()
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.DATA_DETALLES_TRABAJO), object: nil)
             }
         }
     }
