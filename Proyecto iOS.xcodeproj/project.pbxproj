@@ -10,7 +10,6 @@
 		14B1DE5D21333CEA006F1BA6 /* PonenteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B1DE5B21333CEA006F1BA6 /* PonenteViewController.swift */; };
 		14B1DE5E21333CEA006F1BA6 /* PonentesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B1DE5C21333CEA006F1BA6 /* PonentesTableViewController.swift */; };
 		14B1DE6121333D5A006F1BA6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B1DE6021333D5A006F1BA6 /* Constants.swift */; };
-		14B1DE6621333E18006F1BA6 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B1DE6521333E18006F1BA6 /* Utils.swift */; };
 		14B1DE6821333E42006F1BA6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B1DE6721333E42006F1BA6 /* CoreDataManager.swift */; };
 		14B1DE6D21333EC4006F1BA6 /* messages.png in Resources */ = {isa = PBXBuildFile; fileRef = 14B1DE6921333EC4006F1BA6 /* messages.png */; };
 		14B1DE6E21333EC4006F1BA6 /* linux-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 14B1DE6A21333EC4006F1BA6 /* linux-logo.png */; };
@@ -32,8 +31,10 @@
 		3045F36A2133276200F3167F /* PonenteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3045F3692133276200F3167F /* PonenteViewCell.swift */; };
 		3066A57D213729E600097AD1 /* logoEnallt.png in Resources */ = {isa = PBXBuildFile; fileRef = 3066A57C213729E600097AD1 /* logoEnallt.png */; };
 		307FF2A82134AE2000AFB477 /* logoGeeLetrero.png in Resources */ = {isa = PBXBuildFile; fileRef = 307FF2A72134AE1F00AFB477 /* logoGeeLetrero.png */; };
+		30B26C1D215DF0C200596E5C /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B26C1C215DF0C200596E5C /* Alert.swift */; };
+		30B26C1F215DF14100596E5C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B26C1E215DF14100596E5C /* Utils.swift */; };
+		30B26C23215DF1B300596E5C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B26C22215DF1B300596E5C /* LoginViewController.swift */; };
 		30C2716F2132E5FB007E58C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C2716E2132E5FB007E58C5 /* AppDelegate.swift */; };
-		30C271712132E5FB007E58C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C271702132E5FB007E58C5 /* ViewController.swift */; };
 		30C271742132E5FB007E58C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30C271722132E5FB007E58C5 /* Main.storyboard */; };
 		30C271772132E5FB007E58C5 /* Proyecto_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30C271752132E5FB007E58C5 /* Proyecto_iOS.xcdatamodeld */; };
 		30C271792132E605007E58C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30C271782132E605007E58C5 /* Assets.xcassets */; };
@@ -50,7 +51,6 @@
 		14B1DE5B21333CEA006F1BA6 /* PonenteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PonenteViewController.swift; sourceTree = "<group>"; };
 		14B1DE5C21333CEA006F1BA6 /* PonentesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PonentesTableViewController.swift; sourceTree = "<group>"; };
 		14B1DE6021333D5A006F1BA6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		14B1DE6521333E18006F1BA6 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		14B1DE6721333E42006F1BA6 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		14B1DE6921333EC4006F1BA6 /* messages.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = messages.png; sourceTree = "<group>"; };
 		14B1DE6A21333EC4006F1BA6 /* linux-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linux-logo.png"; sourceTree = "<group>"; };
@@ -72,9 +72,11 @@
 		3045F3692133276200F3167F /* PonenteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PonenteViewCell.swift; sourceTree = "<group>"; };
 		3066A57C213729E600097AD1 /* logoEnallt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoEnallt.png; sourceTree = "<group>"; };
 		307FF2A72134AE1F00AFB477 /* logoGeeLetrero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoGeeLetrero.png; sourceTree = "<group>"; };
+		30B26C1C215DF0C200596E5C /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Alert.swift; path = "Proyecto iOS/Utils/Alert.swift"; sourceTree = SOURCE_ROOT; };
+		30B26C1E215DF14100596E5C /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = "Proyecto iOS/Utils/Utils.swift"; sourceTree = SOURCE_ROOT; };
+		30B26C22215DF1B300596E5C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "Proyecto iOS/Login/LoginViewController.swift"; sourceTree = SOURCE_ROOT; };
 		30C2716B2132E5FB007E58C5 /* Proyecto iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Proyecto iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30C2716E2132E5FB007E58C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		30C271702132E5FB007E58C5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		30C271732132E5FB007E58C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		30C271762132E5FB007E58C5 /* Proyecto_iOS.xcdatamodel */ = {isa = PBXFileReference; explicitFileType = wrapper.xcdatamodel; path = Proyecto_iOS.xcdatamodel; sourceTree = "<group>"; };
 		30C271782132E605007E58C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -178,6 +180,25 @@
 			path = Actividad;
 			sourceTree = "<group>";
 		};
+		30B26C18215DEE7700596E5C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				30B26C22215DF1B300596E5C /* LoginViewController.swift */,
+			);
+			name = Login;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		30B26C19215DEF6500596E5C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				30B26C1E215DF14100596E5C /* Utils.swift */,
+				30B26C1C215DF0C200596E5C /* Alert.swift */,
+			);
+			name = Utils;
+			path = "New Group1";
+			sourceTree = "<group>";
+		};
 		30C271622132E5FB007E58C5 = {
 			isa = PBXGroup;
 			children = (
@@ -199,27 +220,27 @@
 		30C2716D2132E5FB007E58C5 /* Proyecto iOS */ = {
 			isa = PBXGroup;
 			children = (
-				30D441EE215D37800075182B /* DataManager */,
-				2A721A4A2134E6F5001CC793 /* Ubicacion */,
-				A006F1942133D81E005F7DF8 /* SobreGEE */,
+				30C2717D2132E605007E58C5 /* Info.plist */,
+				30C2716E2132E5FB007E58C5 /* AppDelegate.swift */,
+				303407FA21332ACC00AF9CA7 /* CosmosDistrib.swift */,
+				30C271782132E605007E58C5 /* Assets.xcassets */,
+				3034080821332DDB00AF9CA7 /* Actividad */,
 				A006F1952133D82F005F7DF8 /* Asistencia */,
 				14B1DE5F21333D33006F1BA6 /* Config */,
-				14B1DE5A21333C4F006F1BA6 /* Ponente */,
-				3034080821332DDB00AF9CA7 /* Actividad */,
-				3034080721332DA700AF9CA7 /* Programa */,
+				30D441EE215D37800075182B /* DataManager */,
 				3034080621332D6C00AF9CA7 /* Evaluación */,
 				3034080521332D3200AF9CA7 /* iconos */,
 				30C271832132EC96007E58C5 /* img */,
-				A006F1962133D83F005F7DF8 /* SWRevealViewController */,
-				303407FA21332ACC00AF9CA7 /* CosmosDistrib.swift */,
-				30C2716E2132E5FB007E58C5 /* AppDelegate.swift */,
-				30C271702132E5FB007E58C5 /* ViewController.swift */,
-				30C271722132E5FB007E58C5 /* Main.storyboard */,
-				14B1DE6521333E18006F1BA6 /* Utils.swift */,
-				30C271782132E605007E58C5 /* Assets.xcassets */,
 				30C2717A2132E605007E58C5 /* LaunchScreen.storyboard */,
-				30C2717D2132E605007E58C5 /* Info.plist */,
+				30B26C18215DEE7700596E5C /* Login */,
+				30C271722132E5FB007E58C5 /* Main.storyboard */,
+				14B1DE5A21333C4F006F1BA6 /* Ponente */,
+				3034080721332DA700AF9CA7 /* Programa */,
 				30C271752132E5FB007E58C5 /* Proyecto_iOS.xcdatamodeld */,
+				A006F1942133D81E005F7DF8 /* SobreGEE */,
+				A006F1962133D83F005F7DF8 /* SWRevealViewController */,
+				2A721A4A2134E6F5001CC793 /* Ubicacion */,
+				30B26C19215DEF6500596E5C /* Utils */,
 			);
 			path = "Proyecto iOS";
 			sourceTree = "<group>";
@@ -409,14 +430,15 @@
 				3045F3682133275F00F3167F /* AbstractViewCell.swift in Sources */,
 				A006F19E2133D9CC005F7DF8 /* SWRevealViewController.m in Sources */,
 				30D441ED215D1DDC0075182B /* ServerDataManager.swift in Sources */,
+				30B26C1D215DF0C200596E5C /* Alert.swift in Sources */,
 				14B1DE5D21333CEA006F1BA6 /* PonenteViewController.swift in Sources */,
-				30C271712132E5FB007E58C5 /* ViewController.swift in Sources */,
 				2AD90A56215D51180032CD92 /* UserDefaults.swift in Sources */,
 				3045F3622133272000F3167F /* ActividadViewCell.swift in Sources */,
+				30B26C1F215DF14100596E5C /* Utils.swift in Sources */,
 				303407FB21332ACC00AF9CA7 /* CosmosDistrib.swift in Sources */,
-				14B1DE6621333E18006F1BA6 /* Utils.swift in Sources */,
 				30C2716F2132E5FB007E58C5 /* AppDelegate.swift in Sources */,
 				30C271772132E5FB007E58C5 /* Proyecto_iOS.xcdatamodeld in Sources */,
+				30B26C23215DF1B300596E5C /* LoginViewController.swift in Sources */,
 				14B1DE6121333D5A006F1BA6 /* Constants.swift in Sources */,
 				2AD90A58215D68220032CD92 /* AsistenteData.swift in Sources */,
 				3045F3642133273D00F3167F /* ActividadViewController.swift in Sources */,
