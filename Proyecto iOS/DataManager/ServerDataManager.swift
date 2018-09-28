@@ -141,4 +141,30 @@ class ServerDataManager: NSObject {
             }
         }
     }
+    
+    // MARK: RETROALIMENTACIÓN
+    
+    /*
+     * Manda la retroalimentación de una ponencia al servidor
+     * En caso exitoso inserta la evaluación localmente
+     */
+    func evaluarTrabajo(asistenteId: Int16, trabajoId: Int16, evaluacion: Evaluacion) {
+        let urlJSON = String(format: Constants.WS_RETROALIMENTACION_URL, asistenteId, trabajoId)
+        var parametros: [String:Int16] = [:]
+        
+        parametros["ponencia"] = evaluacion.ponencia
+        parametros["ponente"] = evaluacion.ponente
+        parametros["relevancia"] = evaluacion.relevancia
+        
+        Alamofire.request(urlJSON, method: .post, parameters: parametros).responseJSON { (response) in
+            guard response.result.isSuccess else {
+                print("Error al traer datos")
+                return
+            }
+
+            self.coreDataManager.insertaRetroalimentacion(trabajoId: trabajoId, evaluacion: evaluacion)
+            self.coreDataManager.saveContext()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.DATA_RETROALIMENTACION), object: nil)
+        }
+    }
 }

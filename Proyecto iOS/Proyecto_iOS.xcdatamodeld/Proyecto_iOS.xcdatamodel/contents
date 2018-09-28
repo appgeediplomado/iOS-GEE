@@ -9,6 +9,12 @@
         <attribute name="institucion" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nombre" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Retroalimentacion" representedClassName="Retroalimentacion" syncable="YES" codeGenerationType="class">
+        <attribute name="ponencia" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="ponente" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="relevancia" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="trabajoId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <entity name="Trabajo" representedClassName="Trabajo" syncable="YES" codeGenerationType="class">
         <attribute name="datosCompletos" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="fecha" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -24,5 +30,6 @@
     <elements>
         <element name="Ponente" positionX="-63" positionY="-18" width="128" height="150"/>
         <element name="Trabajo" positionX="-63" positionY="18" width="128" height="195"/>
+        <element name="Retroalimentacion" positionX="-54" positionY="81" width="128" height="105"/>
     </elements>
 </model>
