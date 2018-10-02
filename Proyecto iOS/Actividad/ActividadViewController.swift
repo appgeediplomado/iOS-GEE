@@ -75,16 +75,9 @@ class ActividadViewController: UITableViewController {
             case 1:
                 if let fecha = self.trabajo?.fecha {
                     let dateFormatter = DateFormatter()
+                    dateFormatter.locale = Locale(identifier: "es_MX")
                     dateFormatter.dateFormat = "EEEE d 'de' MMMM 'de' yyyy"
                     cell.textLabel?.text = dateFormatter.string(from: fecha)
-                    
-//                    dateFormatter.dateFormat = "yyyy-MM-dd"
-//                    dateFormatter.locale = NSLocale(localeIdentifier: "es_MX") as Locale
-                    
-//                    if let date = dateFormatter.date(from: fecha) {
-//                        dateFormatter.dateFormat = "EEEE d 'de' MMMM 'de' yyyy"
-//                        cell.textLabel?.text = dateFormatter.string(from: date)
-//                    }
                 }
 
                 cell.imageView?.image = UIImage(named: "ios-calendar")

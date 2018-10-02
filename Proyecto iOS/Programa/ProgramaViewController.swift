@@ -80,6 +80,7 @@ class ProgramaViewController: UITableViewController {
 
         if let fecha = trabajo.fecha {
             let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "es_MX")
             dateFormatter.dateFormat = "EEEE d 'de' MMMM 'de' yyyy"
             cell.lblFecha?.text = dateFormatter.string(from: fecha)
 
