@@ -20,7 +20,7 @@ class AsistenteData {
      * Si el correo existe se guarda en UserDefaults el ID del asistente y
      * una variable boleana en true (sesionIniciada) que define la sesión iniciada
      */
-    func validarAsistente(correoUsuario: String) {
+    func validarAsistente(correoUsuario: String, passUsuario: String) {
         let urlJSON = Constants.WS_SESION_URL + correoUsuario
         
         Alamofire.request(urlJSON).responseJSON { (response) in
@@ -33,7 +33,9 @@ class AsistenteData {
             
             if let datosAsistente = result["asistente"] as? [String:String] {
                 let asistenteId = Int(datosAsistente["id"] ?? "0")!
-                if asistenteId != 0 {
+                let asistentePass = datosAsistente["password"]
+                
+                if asistenteId != 0 && passUsuario == asistentePass {
                     UserDefaults.standard.setSesion(value: true )
                     UserDefaults.standard.setUsuarioID(value: asistenteId)
                     UserDefaults.standard.setUsuarioNombre(value: datosAsistente["nombre"]!+" "+datosAsistente["apellidos"]!)

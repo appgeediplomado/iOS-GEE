@@ -45,6 +45,13 @@
 		A006F1982133D970005F7DF8 /* SobreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006F1972133D970005F7DF8 /* SobreViewController.swift */; };
 		A006F19A2133D98E005F7DF8 /* AsistenciaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006F1992133D98E005F7DF8 /* AsistenciaViewController.swift */; };
 		A006F19E2133D9CC005F7DF8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A006F19C2133D9CC005F7DF8 /* SWRevealViewController.m */; };
+		A06D573A21ED06B7000D08D8 /* MapaLugarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06D573921ED06B7000D08D8 /* MapaLugarViewController.swift */; };
+		A06D574221ED1104000D08D8 /* edificio_a_primer_piso.png in Resources */ = {isa = PBXBuildFile; fileRef = A06D573C21ED1103000D08D8 /* edificio_a_primer_piso.png */; };
+		A06D574321ED1104000D08D8 /* edificio_a_planta_baja.png in Resources */ = {isa = PBXBuildFile; fileRef = A06D573D21ED1103000D08D8 /* edificio_a_planta_baja.png */; };
+		A06D574421ED1104000D08D8 /* edificio_a_tercer_piso.png in Resources */ = {isa = PBXBuildFile; fileRef = A06D573E21ED1103000D08D8 /* edificio_a_tercer_piso.png */; };
+		A06D574521ED1104000D08D8 /* edificio_b_planta_baja.png in Resources */ = {isa = PBXBuildFile; fileRef = A06D573F21ED1104000D08D8 /* edificio_b_planta_baja.png */; };
+		A06D574621ED1104000D08D8 /* edificio_b_primer_piso.png in Resources */ = {isa = PBXBuildFile; fileRef = A06D574021ED1104000D08D8 /* edificio_b_primer_piso.png */; };
+		A06D574721ED1104000D08D8 /* edificio_b_basamento.png in Resources */ = {isa = PBXBuildFile; fileRef = A06D574121ED1104000D08D8 /* edificio_b_basamento.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +98,13 @@
 		A006F19B2133D9CB005F7DF8 /* Proyecto iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Proyecto iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		A006F19C2133D9CC005F7DF8 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		A006F19D2133D9CC005F7DF8 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		A06D573921ED06B7000D08D8 /* MapaLugarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapaLugarViewController.swift; sourceTree = "<group>"; };
+		A06D573C21ED1103000D08D8 /* edificio_a_primer_piso.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edificio_a_primer_piso.png; sourceTree = "<group>"; };
+		A06D573D21ED1103000D08D8 /* edificio_a_planta_baja.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edificio_a_planta_baja.png; sourceTree = "<group>"; };
+		A06D573E21ED1103000D08D8 /* edificio_a_tercer_piso.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edificio_a_tercer_piso.png; sourceTree = "<group>"; };
+		A06D573F21ED1104000D08D8 /* edificio_b_planta_baja.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edificio_b_planta_baja.png; sourceTree = "<group>"; };
+		A06D574021ED1104000D08D8 /* edificio_b_primer_piso.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edificio_b_primer_piso.png; sourceTree = "<group>"; };
+		A06D574121ED1104000D08D8 /* edificio_b_basamento.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edificio_b_basamento.png; sourceTree = "<group>"; };
 		F5E97330D51FC7868ACB56CF /* Pods_Proyecto_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Proyecto_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -136,6 +150,7 @@
 		2A721A4A2134E6F5001CC793 /* Ubicacion */ = {
 			isa = PBXGroup;
 			children = (
+				A06D573921ED06B7000D08D8 /* MapaLugarViewController.swift */,
 				2A721A4D2134E7C5001CC793 /* UbicacionTableTableViewController.swift */,
 			);
 			path = Ubicacion;
@@ -254,6 +269,7 @@
 		30C271832132EC96007E58C5 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				A06D573B21ED10E5000D08D8 /* PlanoENALLT */,
 				30C271842132ECA1007E58C5 /* logoGee.png */,
 				307FF2A72134AE1F00AFB477 /* logoGeeLetrero.png */,
 				3066A57C213729E600097AD1 /* logoEnallt.png */,
@@ -308,6 +324,19 @@
 				A006F19B2133D9CB005F7DF8 /* Proyecto iOS-Bridging-Header.h */,
 			);
 			path = SWRevealViewController;
+			sourceTree = "<group>";
+		};
+		A06D573B21ED10E5000D08D8 /* PlanoENALLT */ = {
+			isa = PBXGroup;
+			children = (
+				A06D573D21ED1103000D08D8 /* edificio_a_planta_baja.png */,
+				A06D573C21ED1103000D08D8 /* edificio_a_primer_piso.png */,
+				A06D573E21ED1103000D08D8 /* edificio_a_tercer_piso.png */,
+				A06D574121ED1104000D08D8 /* edificio_b_basamento.png */,
+				A06D573F21ED1104000D08D8 /* edificio_b_planta_baja.png */,
+				A06D574021ED1104000D08D8 /* edificio_b_primer_piso.png */,
+			);
+			path = PlanoENALLT;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,17 +400,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A06D574521ED1104000D08D8 /* edificio_b_planta_baja.png in Resources */,
 				3034080121332C7C00AF9CA7 /* ios-ubicacion.png in Resources */,
 				30C271852132ECA1007E58C5 /* logoGee.png in Resources */,
 				30C2717C2132E605007E58C5 /* LaunchScreen.storyboard in Resources */,
+				A06D574621ED1104000D08D8 /* edificio_b_primer_piso.png in Resources */,
+				A06D574221ED1104000D08D8 /* edificio_a_primer_piso.png in Resources */,
 				30C271792132E605007E58C5 /* Assets.xcassets in Resources */,
 				307FF2A82134AE2000AFB477 /* logoGeeLetrero.png in Resources */,
 				3066A57D213729E600097AD1 /* logoEnallt.png in Resources */,
+				A06D574721ED1104000D08D8 /* edificio_b_basamento.png in Resources */,
 				3034080321332C8400AF9CA7 /* ios-reloj.png in Resources */,
 				303407FF21332C6800AF9CA7 /* ios-calendar.png in Resources */,
 				14B1DE6D21333EC4006F1BA6 /* messages.png in Resources */,
 				14B1DE6E21333EC4006F1BA6 /* linux-logo.png in Resources */,
 				30C271742132E5FB007E58C5 /* Main.storyboard in Resources */,
+				A06D574321ED1104000D08D8 /* edificio_a_planta_baja.png in Resources */,
+				A06D574421ED1104000D08D8 /* edificio_a_tercer_piso.png in Resources */,
 				14B1DE7021333EC4006F1BA6 /* menuicon.png in Resources */,
 				303407FD21332C1500AF9CA7 /* ios-evaluar.png in Resources */,
 			);
@@ -450,6 +485,7 @@
 				3045F3642133273D00F3167F /* ActividadViewController.swift in Sources */,
 				3045F360213326F100F3167F /* ProgramaViewController.swift in Sources */,
 				14B1DE5E21333CEA006F1BA6 /* PonentesTableViewController.swift in Sources */,
+				A06D573A21ED06B7000D08D8 /* MapaLugarViewController.swift in Sources */,
 				3045F3662133274300F3167F /* EvaluacionViewController.swift in Sources */,
 				2A721A4E2134E7C5001CC793 /* UbicacionTableTableViewController.swift in Sources */,
 				A006F19A2133D98E005F7DF8 /* AsistenciaViewController.swift in Sources */,

@@ -20,9 +20,12 @@ class AsistenciaViewController: UIViewController {
         if !AsistenteData.instance.existeSesionAsistente() {
             self.performSegue(withIdentifier: "mostrarInicioSesion", sender: nil )
         }
-        sideMenuLeft()
-        lbNombreAsistente.text = AsistenteData.instance.getAsistenteNombre()
-        codeQR(asistenteID: AsistenteData.instance.getAsistenteID())
+        else
+        {
+            sideMenuLeft()
+            lbNombreAsistente.text = AsistenteData.instance.getAsistenteNombre()
+            codeQR(asistenteID: AsistenteData.instance.getAsistenteID())
+        }
     }
 
     override func didReceiveMemoryWarning() {

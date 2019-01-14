@@ -13,7 +13,9 @@ class LoginViewController: UIViewController {
 
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    @IBOutlet weak var alertButton: UIBarButtonItem!
+    //El botón de notificaciones no está dentro del alcance del proyecto
+    //Se deshabilita
+    //@IBOutlet weak var alertButton: UIBarButtonItem!
     
     @IBOutlet weak var txtUsuario: UITextField!
     @IBOutlet weak var txtContrasenia: UITextField!
@@ -48,9 +50,12 @@ class LoginViewController: UIViewController {
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             revealViewController().rearViewRevealWidth = 300
             
-            alertButton.target = revealViewController()
-            alertButton.action = #selector(SWRevealViewController.rightRevealToggle(_:))
-            revealViewController().rightViewRevealWidth = 200
+            //El botón de notificaciones no está dentro del alcance del proyecto
+            //Se deshabilita
+
+            //alertButton.target = revealViewController()
+            //alertButton.action = #selector(SWRevealViewController.rightRevealToggle(_:))
+            //srevealViewController().rightViewRevealWidth = 200
             
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
@@ -63,10 +68,10 @@ class LoginViewController: UIViewController {
         //solo el correo electrónico del usuario con el WS
         
         if validarCampos(usuario: txtUsuario.text!, contrasenia: txtContrasenia.text!) {
-            AsistenteData.instance.validarAsistente(correoUsuario: txtUsuario.text!)
+            AsistenteData.instance.validarAsistente(correoUsuario: txtUsuario.text!, passUsuario: txtContrasenia.text!)
         }
         else{
-            let alert = UIAlertController(title: "Error", message: "El formato del campo usuario es incorrecto o algùn campos está vacío, Verifique", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Error", message: "El formato del campo usuario es incorrecto o algún campo está vacío. Verifique.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
